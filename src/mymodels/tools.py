@@ -70,11 +70,10 @@ if PYDANTIC_V2:
         wrapper over TypeAdapter creation to avoid unnecessarily re-creating
         TypeAdapters more than once.
         """
-        raise RuntimeError('broken')
         return TypeAdapter(type_)
 
-    def validate_as(ta, obj: Any) -> Any:
-        return ta.validate_python(obj)
+    def validate_as(type_: type[T], obj: Any) -> Any:
+        return _get_type_adapter(type_).validate_python(obj)
 
     def validate_json_as(type_: type[T], obj_json: str) -> T:
         """Validate and parse `obj_json` string as object of `type_` type.

@@ -3,7 +3,7 @@ from __future__ import annotations
 from enum import Enum
 from typing import Annotated, Any, Literal, Optional, Union
 
-from pydantic import AwareDatetime, Field, RootModel, confloat, conint, constr, TypeAdapter
+from pydantic import AwareDatetime, Field, RootModel, confloat, conint, constr
 
 from mymodels._pydantic_v2.base_model import BaseModel
 
@@ -1349,5 +1349,3 @@ AnyClass131 = Annotated[
     Union[Class114, Class115, Class116, Class117], Field(discriminator="model_type")
 ]
 AnyClass132 = Annotated[Union[Class118, Class119, Class120], Field(discriminator="model_type")]
-
-any_class_122_ta = TypeAdapter(list[AnyClass122])

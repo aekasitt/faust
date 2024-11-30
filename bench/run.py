@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 import platform
 import time
 from pathlib import Path
@@ -13,8 +14,13 @@ DATA_DIR = BENCH_DIR.parent / "tests" / "data"
 DEFAULT_BENCH_RESULTS_PATH = BENCH_DIR / "results.csv"
 
 
-def run_benchmark(results_file: Optional[str] = None, strict_models: bool = False, save: bool = True):
-    result = import_models_and_validate_data(strict_models=strict_models)
+def run_benchmark(
+    results_file: Optional[str] = None,
+    strict_models: bool = False,
+    defer_build: bool = False,
+    save: bool = True,
+):
+    result = import_models_and_validate_data(strict_models=strict_models, defer_build=defer_build)
 
     machine_info = get_machine_info()
     context_info = get_context_info(strict_models)
@@ -59,6 +65,7 @@ def load_results_dataframe(results_path: Path):
         "python_version": pl.String,
         "pydantic_version": pl.String,
         "strict_models": pl.Boolean,
+        "defer_build": pl.Boolean,
         "import_time_s": pl.Float32,
         "validate_time_s": pl.Float32,
         "validate_again_time_s": pl.Float32,
@@ -92,17 +99,25 @@ def format_machine_id(machine_info: dict[str, str]) -> str:
 
 
 def get_context_info(strict_models: bool):
-    from mymodels._compat import PYDANTIC_VERSION
+    from mymodels._compat import PYDANTIC_V2, PYDANTIC_VERSION
+    from mymodels._pydantic_v2.settings import getenv_defer_build
 
-    return {"pydantic_version": PYDANTIC_VERSION, "strict_models": strict_models}
+    defer_build = getenv_defer_build() if PYDANTIC_V2 else False
+    return {
+        "pydantic_version": PYDANTIC_VERSION,
+        "strict_models": strict_models,
+        "defer_build": defer_build,
+    }
 
 
-def import_models_and_validate_data(strict_models: bool = False):
+def import_models_and_validate_data(strict_models: bool = False, defer_build: bool = False):
+    os.environ["MYMODELS_DEFER_BUILD"] = str(defer_build)
+
     t0 = time.perf_counter()
     if strict_models:
-        from mymodels.strict.models import any_class_122_ta
+        from mymodels.strict.models import AnyClass122
     else:
-        from mymodels.models import any_class_122_ta
+        from mymodels.models import AnyClass122
     t1 = time.perf_counter()
     import_time_s = t1 - t0
 
@@ -117,13 +132,13 @@ def import_models_and_validate_data(strict_models: bool = False):
 
     # Validate model data, first time will need to build parsing type
     t0 = time.perf_counter()
-    validate_as(any_class_122_ta, data)
+    validate_as(list[AnyClass122], data)
     t1 = time.perf_counter()
     validate_time_s = t1 - t0
 
     # Validate model data again, this time should be faster with parsing type cached
     t0 = time.perf_counter()
-    validate_as(any_class_122_ta, data)
+    validate_as(list[AnyClass122], data)
     t1 = time.perf_counter()
     validate_again_time_s = t1 - t0
 
@@ -142,6 +157,11 @@ if __name__ == "__main__":
         help="Use strict models during benchmarking.",
     )
     parser.add_argument(
+        "--defer-build",
+        action="store_true",
+        help="Use deferred model build during benchmarking.",
+    )
+    parser.add_argument(
         "--results-file",
         type=str,
         default=None,
@@ -156,4 +176,9 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    run_benchmark(results_file=args.results_file, strict_models=args.strict_models, save=args.save)
+    run_benchmark(
+        results_file=args.results_file,
+        strict_models=args.strict_models,
+        defer_build=args.defer_build,
+        save=args.save,
+    )

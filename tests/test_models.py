@@ -10,6 +10,7 @@ from mymodels.tools import (
     dump_json_file_as,
     model_dump,
     model_dump_json,
+    model_validate,
     validate_as,
     validate_json_as,
     validate_json_file_as,
@@ -33,9 +34,17 @@ ANYMODEL_NAMES = [
 def test_validate_dump(anymodel_name: str, shared_datadir: Path):
     anymodel = getattr(mc, anymodel_name)
     objs_path = shared_datadir / f"{anymodel_name}.json"
+
     with open(objs_path) as f:
         objs_data = json.load(f)
+
+    # Verify can validate one model at a time
+    for obj_dict in objs_data:
+        model_type = obj_dict["modelType"]
+        model_validate(getattr(mc, model_type), obj_dict)
+
     objs: list[mc.Class35] = validate_as(list[anymodel], objs_data)
+
     for obj_data, obj in zip(objs_data, objs):
         assert obj.model_type == obj.__class__.__name__
         serialized_dict = model_dump(obj)
@@ -46,11 +55,15 @@ def test_validate_dump(anymodel_name: str, shared_datadir: Path):
 def test_validate_dump_json(anymodel_name: str, shared_datadir: Path):
     anymodel = getattr(mc, anymodel_name)
     objs_path = shared_datadir / f"{anymodel_name}.json"
+
     with open(objs_path) as f:
         objs = validate_json_as(list[anymodel], f.read())
+
     objs_json = dump_json_as(list[anymodel], objs, indent=4)
+
     with open(objs_path) as f:
         objs_data = json.load(f)
+
     assert json.loads(objs_json) == objs_data
     for obj_data, obj in zip(objs_data, objs):
         assert json.loads(model_dump_json(obj)) == obj_data

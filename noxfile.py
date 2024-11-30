@@ -1,3 +1,5 @@
+import argparse
+from collections.abc import Sequence
 from pathlib import Path
 
 import nox
@@ -41,22 +43,43 @@ def test(session: nox.Session, pydantic: str):
     ],
 )
 def benchmark(session: nox.Session, pydantic: str):
+    args = _parse_benchmark_args(session.posargs)
+    repeat: int = args.repeat
+    results_file = args.results_file
+
+    extra_args = (f"--results-file={results_file}",) if results_file else ()
+
     session.run_install(
         "uv", "sync", "--frozen", env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location}
     )
     session.install(f"pydantic=={pydantic}")
 
-    session.run("python", "bench/run.py", "--no-save")  # Warmup
-    repeat = BENCHMARK_REPEAT
-    for _ in range(repeat):
-        session.run("python", "bench/run.py")
+    bench_arg_combos = (
+        [],
+        ["--strict-models"],
+        ["--defer-build"],
+        ["--strict-models", "--defer-build"],
+    )
+    if "pydantic-v1" in session.name:
+        # No defer_build in Pydantic v1
+        bench_arg_combos = bench_arg_combos[:2]
 
-    session.run("python", "bench/run.py", "--strict-models", "--no-save")  # Warmup
-    for _ in range(repeat):
-        session.run("python", "bench/run.py", "--strict-models")
+    for bench_args in bench_arg_combos:
+        session.run("python", "bench/run.py", "--no-save")  # Warmup
+        for _ in range(repeat):
+            session.run("python", "bench/run.py", *bench_args, *extra_args)
 
     # Generate plot of results
-    session.run("python", "bench/plot.py")
+    session.run("python", "bench/plot.py", *extra_args)
+
+
+def _parse_benchmark_args(args: Sequence[str]):
+    parser = argparse.ArgumentParser(prog="nox -s benchmark")
+    parser.add_argument(
+        "--repeat", type=int, default=BENCHMARK_REPEAT, help="Number of repetitions"
+    )
+    parser.add_argument("--results-file", type=str, default=None, help="Results file path")
+    return parser.parse_args(args)
 
 
 @nox.session(python=False)

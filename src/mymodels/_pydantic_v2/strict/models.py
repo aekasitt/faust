@@ -1357,5 +1357,3 @@ AnyClass131 = Annotated[
     Union[Class114, Class115, Class116, Class117], Field(discriminator="model_type")
 ]
 AnyClass132 = Annotated[Union[Class118, Class119, Class120], Field(discriminator="model_type")]
-
-any_class_122_ta = TypeAdapter(list[AnyClass122])

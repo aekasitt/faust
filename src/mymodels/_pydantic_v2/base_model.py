@@ -11,6 +11,8 @@ from typing import Any, Literal
 from pydantic import AwareDatetime, BaseModel as PydanticBaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
 
+from mymodels._pydantic_v2.settings import getenv_defer_build
+
 
 def encode_datetime_z(dt: datetime) -> str:
     return dt.isoformat(timespec="microseconds").replace("+00:00", "Z")
@@ -24,7 +26,7 @@ class BaseModel(PydanticBaseModel):
         populate_by_name=True,
         protected_namespaces=(),
         alias_generator=to_camel,
-        defer_build=True,
+        defer_build=getenv_defer_build(),
     )
 
     def to_dict(

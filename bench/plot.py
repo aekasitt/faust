@@ -9,7 +9,6 @@ from plotly.subplots import make_subplots
 BENCH_DIR = Path(__file__).parent
 
 DEFAULT_BENCH_RESULTS_PATH = BENCH_DIR / "results.csv"
-DEFAULT_BENCH_SAVEPLOT_PATH = BENCH_DIR / "results.png"
 
 
 def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Optional[str] = None):
@@ -21,16 +20,19 @@ def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Option
     if save_plot:
         save_plot_path = Path(save_plot)
     else:
-        save_plot_path = DEFAULT_BENCH_SAVEPLOT_PATH
+        save_plot_path = results_path.with_suffix(".png")
 
     # Load the results DataFrame
     results_df = pl.read_csv(results_path)
 
-    # Ensure 'strict_models' is treated as a string for grouping
-    results_df = results_df.with_columns(pl.col("strict_models").cast(pl.Utf8))
+    # Ensure bool columns are treated as a string for grouping
+    results_df = results_df.with_columns(
+        pl.col("strict_models").cast(pl.Utf8),
+        pl.col("defer_build").cast(pl.Utf8),
+    )
 
     # Group by 'pydantic_version' and 'strict_models', compute the mean of 'import_time_s' and 'validate_time_s'
-    avg_df = results_df.group_by(["pydantic_version", "strict_models"]).mean()
+    avg_df = results_df.group_by(["pydantic_version", "strict_models", "defer_build"]).mean()
 
     # Split 'pydantic_version' into 'major', 'minor', and 'patch' components
     avg_df = avg_df.with_columns(
@@ -68,9 +70,11 @@ def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Option
 
     # Plot Import Time
     for strict_model in strict_model_values:
-        subset = avg_df.filter(pl.col("strict_models") == strict_model).sort(
-            by=["pydantic_major", "pydantic_minor", "pydantic_patch"]
+        subset = avg_df.filter(
+            pl.col("strict_models") == strict_model, pl.col("defer_build") == "true"
         )
+        # Sort by semantic version
+        subset = subset.sort(by=["pydantic_major", "pydantic_minor", "pydantic_patch"])
         name = (
             "Strict (mymodels.strict.models)"
             if strict_model == "true"
