@@ -1385,3 +1385,5 @@ Class118.update_forward_refs()
 Class119.update_forward_refs()
 Class120.update_forward_refs()
 Class121.update_forward_refs()
+
+any_class_122_ta = list[AnyClass122]

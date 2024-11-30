@@ -46,10 +46,12 @@ def benchmark(session: nox.Session, pydantic: str):
     )
     session.install(f"pydantic=={pydantic}")
 
+    session.run("python", "bench/run.py", "--no-save")  # Warmup
     repeat = BENCHMARK_REPEAT
     for _ in range(repeat):
         session.run("python", "bench/run.py")
 
+    session.run("python", "bench/run.py", "--strict-models", "--no-save")  # Warmup
     for _ in range(repeat):
         session.run("python", "bench/run.py", "--strict-models")
 
