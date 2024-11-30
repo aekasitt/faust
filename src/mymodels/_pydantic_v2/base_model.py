@@ -24,6 +24,7 @@ class BaseModel(PydanticBaseModel):
         populate_by_name=True,
         protected_namespaces=(),
         alias_generator=to_camel,
+        defer_build=True,
     )
 
     def to_dict(
