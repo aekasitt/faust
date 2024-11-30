@@ -28,18 +28,18 @@ class Class2(StrEnum):
 
 class Class3(StrEnum):
     field7 = "field7"
-    field8 = "field8"
-    field9 = "field9"
+    field_8 = "field_8"
+    field_9 = "field_9"
     field10 = "field10"
-    field11 = "field11"
+    field_11 = "field_11"
     field12 = "field12"
-    field13 = "field13"
+    field_13 = "field_13"
 
 
 class Class4(StrEnum):
-    field14 = "field14"
+    field_14 = "field_14"
     field15 = "field15"
-    field16 = "field16"
+    field_16 = "field_16"
 
 
 class Class5(StrEnum):
@@ -89,7 +89,7 @@ class Class10(StrEnum):
 class Class11(StrEnum):
     field43 = "field43"
     field44 = "field44"
-    field45 = "field45"
+    field_45 = "field_45"
     field46 = "field46"
     field47 = "field47"
     field42 = "field42"
@@ -101,7 +101,7 @@ class Class12(StrEnum):
     field49 = "field49"
     field50 = "field50"
     field51 = "field51"
-    field52 = "field52"
+    field_52 = "field_52"
     field41 = "field41"
     field43 = "field43"
     field47 = "field47"
@@ -109,23 +109,23 @@ class Class12(StrEnum):
 
 
 class Class13(StrEnum):
-    field54 = "field54"
-    field55 = "field55"
-    field56 = "field56"
-    field57 = "field57"
+    field_54 = "field_54"
+    field_55 = "field_55"
+    field_56 = "field_56"
+    field_57 = "field_57"
     field58 = "field58"
     field59 = "field59"
 
 
 class Class14(BaseModel):
-    __root__: Literal["Class14"] = "Class14"
+    __root__: Literal["DEGREES"] = "DEGREES"
 
 
 class Class15(StrEnum):
-    field60 = "field60"
-    field61 = "field61"
-    field62 = "field62"
-    field63 = "field63"
+    field_60 = "field_60"
+    field_61 = "field_61"
+    field_62 = "field_62"
+    field_63 = "field_63"
 
 
 class Class16(StrEnum):
@@ -167,29 +167,29 @@ class Class19(StrEnum):
 
 
 class Class20(StrEnum):
-    field90 = "field90"
-    field91 = "field91"
-    field92 = "field92"
-    field93 = "field93"
+    field_90 = "field_90"
+    field_91 = "field_91"
+    field_92 = "field_92"
+    field_93 = "field_93"
     field4 = "field4"
 
 
 class Class21(StrEnum):
-    field94 = "field94"
-    field95 = "field95"
-    field96 = "field96"
-    field97 = "field97"
+    field_94 = "field_94"
+    field_95 = "field_95"
+    field_96 = "field_96"
+    field_97 = "field_97"
 
 
 class Class22(StrEnum):
-    field98 = "field98"
-    field99 = "field99"
-    field100 = "field100"
+    field_98 = "field_98"
+    field_99 = "field_99"
+    field_100 = "field_100"
 
 
 class Class23(BaseModel):
     modelType: Literal["Class23"] = "Class23"
-    field101: Optional[constr(regex="^([0-9]+\\.){2}(\\*|[0-9]+)(-.*)?")] = Field(
+    field_101: Optional[constr(regex="^([0-9]+\\.){2}(\\*|[0-9]+)(-.*)?")] = Field(
         "0.50.1", alias="field101"
     )
 
@@ -216,11 +216,11 @@ class Class26(Class23):
     modelType: Literal["Class26"] = "Class26"
     field104: Optional[Class1] = None
     field105: dict[str, Any] = Field(..., description="")
-    field106: str = Field(..., alias="field106", description="")
+    field_106: str = Field(..., alias="field106", description="")
     field107: str = Field(..., description="")
     field108: str = Field(..., description="")
     field109: datetime = Field(..., description="", example="")
-    field110: list[Class24] = Field(
+    field_110: list[Class24] = Field(
         ...,
         alias="field110",
         description="",
@@ -235,9 +235,9 @@ class Class27(BaseModel):
 
 
 class Class28(BaseModel):
-    field112: Optional[Class3] = Field(None, alias="field112", description="", example="")
-    field113: Optional[str] = Field(None, alias="field113", description="")
-    field114: Optional[int] = Field(0, alias="field114", description="", example=2)
+    field_112: Optional[Class3] = Field(None, alias="field112", description="", example="")
+    field_113: Optional[str] = Field(None, alias="field113", description="")
+    field_114: Optional[int] = Field(0, alias="field114", description="", example=2)
     field107: Optional[constr(min_length=1, max_length=36)] = Field(
         None, description="", example=""
     )
@@ -248,7 +248,7 @@ class Class28(BaseModel):
 
 class Class29(Class23):
     modelType: Literal["Class29"] = "Class29"
-    field116: Optional[datetime] = Field(None, alias="field116")
+    field_116: Optional[datetime] = Field(None, alias="field116")
     field117: Optional[str] = Field(None, example="")
 
 
@@ -258,29 +258,29 @@ class Class30(BaseModel):
 
 
 class Class31(BaseModel):
-    field120: Optional[float] = Field(None, alias="field120", description="", example=256)
-    field121: Optional[float] = Field(None, alias="field121", description="", example=256)
-    field122: Optional[float] = Field(None, alias="field122", description="", example=256)
-    field123: Optional[float] = Field(None, alias="field123", description="", example=256)
-    field124: Optional[float] = Field(None, alias="field124", description="", example=0.85)
+    field_120: Optional[float] = Field(None, alias="field120", description="", example=256)
+    field_121: Optional[float] = Field(None, alias="field121", description="", example=256)
+    field_122: Optional[float] = Field(None, alias="field122", description="", example=256)
+    field_123: Optional[float] = Field(None, alias="field123", description="", example=256)
+    field_124: Optional[float] = Field(None, alias="field124", description="", example=0.85)
 
 
 class Class32(BaseModel):
-    field125: Optional[float] = Field(None, alias="field125", description="", example=256)
-    field126: Optional[float] = Field(None, alias="field126", description="", example=256)
-    field127: Optional[float] = Field(None, alias="field127", description="", example=1.1)
-    field128: Optional[float] = Field(None, alias="field128", description="", example=1.1)
-    field129: Optional[Class15] = Field(None, alias="field129", description="", example="")
-    field130: Optional[Class15] = Field(None, alias="field130", description="", example="")
-    field131: Optional[float] = Field(None, alias="field131", description="", example=1.1)
-    field132: Optional[float] = Field(None, alias="field132", description="", example=1.1)
-    field133: Optional[float] = Field(None, alias="field133", description="", example=1.1)
-    field134: Optional[float] = Field(None, alias="field134", description="", example=1.1)
-    field135: Optional[float] = Field(None, alias="field135", description="", example=512)
-    field136: Optional[float] = Field(None, alias="field136", description="", example=512)
-    field137: Optional[Class14] = Field(None, alias="field137", description="", example="")
-    field138: Optional[Class14] = Field(None, alias="field138", description="", example="")
-    field139: Optional[float] = Field(None, alias="field139", description="", example=512)
+    field_125: Optional[float] = Field(None, alias="field125", description="", example=256)
+    field_126: Optional[float] = Field(None, alias="field126", description="", example=256)
+    field_127: Optional[float] = Field(None, alias="field127", description="", example=1.1)
+    field_128: Optional[float] = Field(None, alias="field128", description="", example=1.1)
+    field_129: Optional[Class15] = Field(None, alias="field129", description="", example="")
+    field_130: Optional[Class15] = Field(None, alias="field130", description="", example="")
+    field_131: Optional[float] = Field(None, alias="field131", description="", example=1.1)
+    field_132: Optional[float] = Field(None, alias="field132", description="", example=1.1)
+    field_133: Optional[float] = Field(None, alias="field133", description="", example=1.1)
+    field_134: Optional[float] = Field(None, alias="field134", description="", example=1.1)
+    field_135: Optional[float] = Field(None, alias="field135", description="", example=512)
+    field_136: Optional[float] = Field(None, alias="field136", description="", example=512)
+    field_137: Optional[Class14] = Field(None, alias="field137", description="", example="")
+    field_138: Optional[Class14] = Field(None, alias="field138", description="", example="")
+    field_139: Optional[float] = Field(None, alias="field139", description="", example=512)
 
 
 class Class33(BaseModel):
@@ -289,31 +289,31 @@ class Class33(BaseModel):
 
 class Class34(BaseModel):
     field140: Optional[Class19] = None
-    field141: Optional[list[str]] = Field(
+    field_141: Optional[list[str]] = Field(
         [], alias="field141", example=["createdAt", "currentStatus", "id"]
     )
     field142: list[Class27]
     field143: int
-    field144: int = Field(..., alias="field144")
+    field_144: int = Field(..., alias="field144")
 
 
 class Class35(BaseModel):
     modelType: Literal["Class35"] = "Class35"
     id: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = None
-    field145: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = Field(
+    field_145: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = Field(
         None, alias="field145"
     )
-    field101: Optional[constr(regex="^([0-9]+\\.){2}(\\*|[0-9]+)(-.*)?")] = Field(
+    field_101: Optional[constr(regex="^([0-9]+\\.){2}(\\*|[0-9]+)(-.*)?")] = Field(
         "0.50.1", alias="field101"
     )
-    field146: Optional[datetime] = Field(None, alias="field146", description="", example="")
-    field147: Optional[datetime] = Field(None, alias="field147", description="", example="")
-    field148: Optional[constr(min_length=1, max_length=64)] = Field(
+    field_146: Optional[datetime] = Field(None, alias="field146", description="", example="")
+    field_147: Optional[datetime] = Field(None, alias="field147", description="", example="")
+    field_148: Optional[constr(min_length=1, max_length=64)] = Field(
         None, alias="field148", description="", example=""
     )
-    field149: Optional[Class7] = Field(None, alias="field149")
-    field150: Optional[list[Class36]] = Field(None, alias="field150")
-    field151: Optional[list[AnyClass129]] = Field(None, alias="field151")
+    field_149: Optional[Class7] = Field(None, alias="field149")
+    field_150: Optional[list[Class36]] = Field(None, alias="field150")
+    field_151: Optional[list[AnyClass129]] = Field(None, alias="field151")
     field152: Optional[list[Class24]] = Field([], description="")
 
     def __init__(self, **data):
@@ -328,38 +328,38 @@ class Class35(BaseModel):
 class Class36(BaseModel):
     field153: Optional[AnyClass122] = None
     id: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = None
-    field154: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = Field(
+    field_154: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = Field(
         None, alias="field154"
     )
-    field155: Optional[str] = Field(None, alias="field155")
-    field101: constr(regex="^([0-9]+\\.){2}(\\*|[0-9]+)(-.*)?") = Field(..., alias="field101")
+    field_155: Optional[str] = Field(None, alias="field155")
+    field_101: constr(regex="^([0-9]+\\.){2}(\\*|[0-9]+)(-.*)?") = Field(..., alias="field101")
     model_type: str = Field(..., alias="modelType", description="")
-    field156: Optional[datetime] = Field(None, alias="field156", description="", example="")
-    field157: Optional[datetime] = Field(None, alias="field157", description="", example="")
-    field148: Optional[constr(min_length=1, max_length=64)] = Field(
+    field_156: Optional[datetime] = Field(None, alias="field156", description="", example="")
+    field_157: Optional[datetime] = Field(None, alias="field157", description="", example="")
+    field_148: Optional[constr(min_length=1, max_length=64)] = Field(
         None, alias="field148", description="", example=""
     )
-    field149: Optional[Class7] = Field(None, alias="field149")
+    field_149: Optional[Class7] = Field(None, alias="field149")
 
 
 class Class37(BaseModel):
     modelType: Literal["Class37"] = "Class37"
     field153: Optional[AnyClass122] = None
     id: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = None
-    field145: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = Field(
+    field_145: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = Field(
         None, alias="field145"
     )
-    field101: Optional[constr(regex="^([0-9]+\\.){2}(\\*|[0-9]+)(-.*)?")] = Field(
+    field_101: Optional[constr(regex="^([0-9]+\\.){2}(\\*|[0-9]+)(-.*)?")] = Field(
         "0.50.1", alias="field101"
     )
-    field146: Optional[datetime] = Field(None, alias="field146", description="", example="")
-    field147: Optional[datetime] = Field(None, alias="field147", description="", example="")
-    field148: Optional[constr(min_length=1, max_length=64)] = Field(
+    field_146: Optional[datetime] = Field(None, alias="field146", description="", example="")
+    field_147: Optional[datetime] = Field(None, alias="field147", description="", example="")
+    field_148: Optional[constr(min_length=1, max_length=64)] = Field(
         None, alias="field148", description="", example=""
     )
-    field149: Optional[Class7] = Field(None, alias="field149")
+    field_149: Optional[Class7] = Field(None, alias="field149")
     field152: Optional[list[Class24]] = Field([], description="")
-    field158: Optional[constr(min_length=0, max_length=64)] = Field(
+    field_158: Optional[constr(min_length=0, max_length=64)] = Field(
         None, alias="field158", description="", example=""
     )
 
@@ -499,9 +499,9 @@ class Class49(Class35, Class28):
     modelType: Literal["Class49"] = "Class49"
     field159: constr(min_length=0, max_length=128) = Field(..., description="", example="")
     field160: Optional[str] = Field(None, description="")
-    field161: Optional[int] = Field(None, alias="field161", description="")
-    field162: Optional[str] = Field(None, alias="field162", description="")
-    field163: Optional[str] = Field(None, alias="field163", description="")
+    field_161: Optional[int] = Field(None, alias="field161", description="")
+    field_162: Optional[str] = Field(None, alias="field162", description="")
+    field_163: Optional[str] = Field(None, alias="field163", description="")
     field164: Optional[int] = Field(None, description="")
 
 
@@ -511,11 +511,11 @@ class Class50(Class35):
 
 class Class51(Class35, Class28):
     modelType: Literal["Class51"] = "Class51"
-    field165: Optional[Class60] = Field(None, alias="field165")
-    field166: Optional[datetime] = Field(None, alias="field166", description="", example="")
-    field167: Optional[datetime] = Field(None, alias="field167", description="", example="")
-    field168: Optional[datetime] = Field(None, alias="field168", description="", example="")
-    field169: Optional[datetime] = Field(None, alias="field169", description="", example="")
+    field_165: Optional[Class60] = Field(None, alias="field165")
+    field_166: Optional[datetime] = Field(None, alias="field166", description="", example="")
+    field_167: Optional[datetime] = Field(None, alias="field167", description="", example="")
+    field_168: Optional[datetime] = Field(None, alias="field168", description="", example="")
+    field_169: Optional[datetime] = Field(None, alias="field169", description="", example="")
     field170: Optional[constr(min_length=0, max_length=1024)] = Field(
         None, description="", example=""
     )
@@ -529,7 +529,7 @@ class Class52(Class35):
 
 class Class53(Class35):
     modelType: Literal["Class53"] = "Class53"
-    field173: datetime = Field(..., alias="field173", description="", example="")
+    field_173: datetime = Field(..., alias="field173", description="", example="")
 
 
 class Class54(Class35):
@@ -541,112 +541,112 @@ class Class54(Class35):
 class Class55(Class35):
     modelType: Literal["Class55"] = "Class55"
     field171: Optional[Class61] = None
-    field176: Optional[float] = Field(None, alias="field176", description="")
+    field_176: Optional[float] = Field(None, alias="field176", description="")
 
 
 class Class56(Class35, Class28):
     modelType: Literal["Class56"] = "Class56"
-    field173: datetime = Field(..., alias="field173", description="", example="")
-    field177: Optional[list[AnyClass126]] = Field(None, alias="field177")
+    field_173: datetime = Field(..., alias="field173", description="", example="")
+    field_177: Optional[list[AnyClass126]] = Field(None, alias="field177")
     field175: Optional[Class69] = Field(None, description="")
     field172: Optional[AnyClass130] = None
-    field178: Optional[list[AnyClass132]] = Field(None, alias="field178", description="")
-    field179: Optional[bool] = Field(None, alias="field179", description="", example=False)
-    field180: Optional[bool] = Field(None, alias="field180", description="", example=False)
+    field_178: Optional[list[AnyClass132]] = Field(None, alias="field178", description="")
+    field_179: Optional[bool] = Field(None, alias="field179", description="", example=False)
+    field_180: Optional[bool] = Field(None, alias="field180", description="", example=False)
 
 
 class Class57(Class35, Class28):
     modelType: Literal["Class57"] = "Class57"
-    field181: Optional[Class18] = Field(None, alias="field181")
-    field182: Optional[list[AnyClass128]] = Field(None, alias="field182")
+    field_181: Optional[Class18] = Field(None, alias="field181")
+    field_182: Optional[list[AnyClass128]] = Field(None, alias="field182")
     field118: str = Field(..., example="")
-    field183: Optional[list[AnyClass124]] = Field(None, alias="field183")
-    field184: Optional[Class16] = Field(None, alias="field184", description="")
-    field185: Optional[list[AnyClass131]] = Field(None, alias="field185", description="")
+    field_183: Optional[list[AnyClass124]] = Field(None, alias="field183")
+    field_184: Optional[Class16] = Field(None, alias="field184", description="")
+    field_185: Optional[list[AnyClass131]] = Field(None, alias="field185", description="")
 
 
 class Class58(Class35):
     modelType: Literal["Class58"] = "Class58"
     field118: str = Field(..., example="")
-    field181: Optional[Class18] = Field(None, alias="field181")
-    field186: Optional[list[Class60]] = Field(None, alias="field186")
+    field_181: Optional[Class18] = Field(None, alias="field181")
+    field_186: Optional[list[Class60]] = Field(None, alias="field186")
     field172: Optional[AnyClass130] = None
 
 
 class Class59(Class35, Class28):
     modelType: Literal["Class59"] = "Class59"
-    field187: Optional[list[Class61]] = Field(None, alias="field187")
-    field182: Optional[list[AnyClass128]] = Field(None, alias="field182")
-    field186: Optional[list[Class60]] = Field(None, alias="field186")
+    field_187: Optional[list[Class61]] = Field(None, alias="field187")
+    field_182: Optional[list[AnyClass128]] = Field(None, alias="field182")
+    field_186: Optional[list[Class60]] = Field(None, alias="field186")
     field175: Optional[Class69] = Field(None, description="")
     field118: str = Field(..., description="", example="")
 
 
 class Class60(Class35, Class28):
     modelType: Literal["Class60"] = "Class60"
-    field188: Optional[list[AnyClass123]] = Field(None, alias="field188")
-    field189: Optional[float] = Field(None, alias="field189", description="", example=11)
-    field190: datetime = Field(..., alias="field190", description="", example="")
-    field191: datetime = Field(..., alias="field191", description="", example="")
+    field_188: Optional[list[AnyClass123]] = Field(None, alias="field188")
+    field_189: Optional[float] = Field(None, alias="field189", description="", example=11)
+    field_190: datetime = Field(..., alias="field190", description="", example="")
+    field_191: datetime = Field(..., alias="field191", description="", example="")
     field171: Class61
     field192: Optional[float] = Field(None, description="", example=10.0)
     field193: Optional[AnyClass131] = None
-    field194: Optional[str] = Field(None, alias="field194", description="")
+    field_194: Optional[str] = Field(None, alias="field194", description="")
     field195: Optional[AnyClass132] = None
-    field196: Optional[list[Class70]] = Field(None, alias="field196")
+    field_196: Optional[list[Class70]] = Field(None, alias="field196")
     field197: Optional[int] = Field(None, description="", example=10)
-    field198: Optional[Class8] = Field(None, alias="field198")
-    field199: Optional[Class5] = Field(None, alias="field199")
-    field200: Optional[str] = Field(None, alias="field200")
-    field201: Optional[list[Class24]] = Field(None, alias="field201", description="")
+    field_198: Optional[Class8] = Field(None, alias="field198")
+    field_199: Optional[Class5] = Field(None, alias="field199")
+    field_200: Optional[str] = Field(None, alias="field200")
+    field_201: Optional[list[Class24]] = Field(None, alias="field201", description="")
     field107: constr(min_length=1, max_length=36) = Field(..., description="", example="")
 
 
 class Class61(Class35, Class28):
     modelType: Literal["Class61"] = "Class61"
-    field186: Optional[list[Class60]] = Field(None, alias="field186")
-    field181: Class11 = Field(..., alias="field181")
-    field202: Optional[list[Class62]] = Field(None, alias="field202")
+    field_186: Optional[list[Class60]] = Field(None, alias="field186")
+    field_181: Class11 = Field(..., alias="field181")
+    field_202: Optional[list[Class62]] = Field(None, alias="field202")
     field195: AnyClass132
     field197: int = Field(..., description="", example=1)
-    field203: AnyClass127 = Field(..., alias="field203")
-    field183: Optional[list[AnyClass124]] = Field(None, alias="field183")
-    field201: Optional[list[Class24]] = Field(None, alias="field201", description="")
+    field_203: AnyClass127 = Field(..., alias="field203")
+    field_183: Optional[list[AnyClass124]] = Field(None, alias="field183")
+    field_201: Optional[list[Class24]] = Field(None, alias="field201", description="")
 
 
 class Class62(Class35):
     modelType: Literal["Class62"] = "Class62"
     field153: Optional[Class61] = None
     field204: Optional[Class11] = None
-    field205: Optional[Class12] = Field(None, alias="field205")
-    field206: Optional[str] = Field(None, alias="field206")
+    field_205: Optional[Class12] = Field(None, alias="field205")
+    field_206: Optional[str] = Field(None, alias="field206")
 
 
 class Class63(Class35):
     modelType: Literal["Class63"] = "Class63"
     field118: Optional[str] = Field(None, description="")
-    field207: Optional[str] = Field(None, alias="field207", description="")
-    field208: Optional[str] = Field(None, alias="field208", description="")
-    field209: Optional[Class64] = Field(None, alias="field209")
+    field_207: Optional[str] = Field(None, alias="field207", description="")
+    field_208: Optional[str] = Field(None, alias="field208", description="")
+    field_209: Optional[Class64] = Field(None, alias="field209")
 
 
 class Class64(Class35):
     modelType: Literal["Class64"] = "Class64"
     field118: Optional[str] = Field(None, description="")
-    field210: Optional[Class63] = Field(None, alias="field210")
+    field_210: Optional[Class63] = Field(None, alias="field210")
     field211: Optional[Class10] = Field(None, description="")
-    field201: Optional[list[Class24]] = Field(None, alias="field201", description="")
+    field_201: Optional[list[Class24]] = Field(None, alias="field201", description="")
 
 
 class Class65(Class35):
     modelType: Literal["Class65"] = "Class65"
-    field212: float = Field(..., alias="field212")
-    field213: float = Field(..., alias="field213")
-    field214: float = Field(..., alias="field214")
-    field215: float = Field(..., alias="field215")
-    field216: float = Field(..., alias="field216")
-    field217: float = Field(..., alias="field217")
-    field116: datetime = Field(..., alias="field116", description="")
+    field_212: float = Field(..., alias="field212")
+    field_213: float = Field(..., alias="field213")
+    field_214: float = Field(..., alias="field214")
+    field_215: float = Field(..., alias="field215")
+    field_216: float = Field(..., alias="field216")
+    field_217: float = Field(..., alias="field217")
+    field_116: datetime = Field(..., alias="field116", description="")
     field218: Optional[Class67] = None
     field195: Optional[Class118] = None
 
@@ -654,133 +654,133 @@ class Class65(Class35):
 class Class66(Class35):
     modelType: Literal["Class66"] = "Class66"
     field219: Optional[Class67] = None
-    field220: conint(ge=0, le=5) = Field(..., alias="field220", description="")
-    field221: list[float] = Field(..., alias="field221", description="", max_items=6, min_items=6)
+    field_220: conint(ge=0, le=5) = Field(..., alias="field220", description="")
+    field_221: list[float] = Field(..., alias="field221", description="", max_items=6, min_items=6)
 
 
 class Class67(Class35):
     modelType: Literal["Class67"] = "Class67"
-    field222: list[Class66] = Field(
+    field_222: list[Class66] = Field(
         ..., alias="field222", description="", max_items=6, min_items=6
     )
-    field223: Class65 = Field(..., alias="field223")
+    field_223: Class65 = Field(..., alias="field223")
 
 
 class Class68(Class35):
     modelType: Literal["Class68"] = "Class68"
-    field224: Optional[Class6] = Field(None, alias="field224")
-    field116: datetime = Field(..., alias="field116")
-    field225: float = Field(..., alias="field225", description="", example=1.1)
-    field226: float = Field(..., alias="field226", description="", example=1.1)
+    field_224: Optional[Class6] = Field(None, alias="field224")
+    field_116: datetime = Field(..., alias="field116")
+    field_225: float = Field(..., alias="field225", description="", example=1.1)
+    field_226: float = Field(..., alias="field226", description="", example=1.1)
     field195: Optional[Class119] = None
 
 
 class Class69(Class35):
     modelType: Literal["Class69"] = "Class69"
     field118: Optional[str] = Field(None, description="", example="")
-    field179: Optional[bool] = Field(False, alias="field179", description="")
-    field227: str = Field(..., alias="field227", example=16908)
-    field228: Optional[confloat(ge=0.0)] = Field(
+    field_179: Optional[bool] = Field(False, alias="field179", description="")
+    field_227: str = Field(..., alias="field227", example=16908)
+    field_228: Optional[confloat(ge=0.0)] = Field(
         None, alias="field228", description="", example=0.02
     )
-    field229: Optional[confloat(ge=0.0)] = Field(
+    field_229: Optional[confloat(ge=0.0)] = Field(
         None, alias="field229", description="", example=500.0
     )
     field230: Optional[confloat(ge=0.0, le=1.0)] = Field(None, description="", example=0.21)
-    field231: Optional[confloat(ge=0.0)] = Field(
+    field_231: Optional[confloat(ge=0.0)] = Field(
         None, alias="field231", description="", example=2.1
     )
-    field178: Optional[list[AnyClass132]] = Field(None, alias="field178")
-    field182: Optional[list[AnyClass128]] = Field(None, alias="field182")
-    field177: Optional[list[AnyClass126]] = Field(None, alias="field177")
+    field_178: Optional[list[AnyClass132]] = Field(None, alias="field178")
+    field_182: Optional[list[AnyClass128]] = Field(None, alias="field182")
+    field_177: Optional[list[AnyClass126]] = Field(None, alias="field177")
 
 
 class Class70(Class35, Class28):
     modelType: Literal["Class70"] = "Class70"
-    field165: Optional[Class60] = Field(None, alias="field165")
-    field182: Optional[list[Class109]] = Field(None, alias="field182")
-    field232: Optional[datetime] = Field(None, alias="field232", description="", example="")
-    field233: datetime = Field(..., alias="field233", description="", example="")
-    field234: float = Field(..., alias="field234", description="", example=1.0)
-    field198: Optional[Class8] = Field(None, alias="field198")
-    field235: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = Field(
+    field_165: Optional[Class60] = Field(None, alias="field165")
+    field_182: Optional[list[Class109]] = Field(None, alias="field182")
+    field_232: Optional[datetime] = Field(None, alias="field232", description="", example="")
+    field_233: datetime = Field(..., alias="field233", description="", example="")
+    field_234: float = Field(..., alias="field234", description="", example=1.0)
+    field_198: Optional[Class8] = Field(None, alias="field198")
+    field_235: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = Field(
         None, alias="field235"
     )
     field159: Optional[constr(min_length=0, max_length=128)] = Field(
         None, description="", example=""
     )
     field236: Optional[int] = Field(None, description="", example=371945)
-    field237: Optional[float] = Field(None, alias="field237", description="", example=21.23)
-    field238: Optional[float] = Field(None, alias="field238", description="", example=21.23)
-    field239: Optional[int] = Field(None, alias="field239", description="", example=1)
-    field240: Optional[int] = Field(None, alias="field240", description="", example=1)
-    field241: Class9 = Field(..., alias="field241", description="")
-    field242: Optional[int] = Field(None, alias="field242", description="", example=16)
-    field243: Optional[float] = Field(None, alias="field243", description="", example=321.123)
-    field244: Optional[float] = Field(None, alias="field244", description="", example=321.123)
-    field245: Optional[float] = Field(None, alias="field245", description="", example=321.123)
-    field246: Optional[float] = Field(None, alias="field246", description="", example=321.123)
-    field247: int = Field(..., alias="field247", description="", example=1)
+    field_237: Optional[float] = Field(None, alias="field237", description="", example=21.23)
+    field_238: Optional[float] = Field(None, alias="field238", description="", example=21.23)
+    field_239: Optional[int] = Field(None, alias="field239", description="", example=1)
+    field_240: Optional[int] = Field(None, alias="field240", description="", example=1)
+    field_241: Class9 = Field(..., alias="field241", description="")
+    field_242: Optional[int] = Field(None, alias="field242", description="", example=16)
+    field_243: Optional[float] = Field(None, alias="field243", description="", example=321.123)
+    field_244: Optional[float] = Field(None, alias="field244", description="", example=321.123)
+    field_245: Optional[float] = Field(None, alias="field245", description="", example=321.123)
+    field_246: Optional[float] = Field(None, alias="field246", description="", example=321.123)
+    field_247: int = Field(..., alias="field247", description="", example=1)
     field172: Optional[AnyClass130] = None
-    field248: constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}") = Field(
+    field_248: constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}") = Field(
         ..., alias="field248", description=""
     )
-    field249: int = Field(..., alias="field249", description="")
-    field250: Optional[bool] = Field(None, alias="field250", description="")
-    field251: Optional[Class71] = Field(None, alias="field251")
+    field_249: int = Field(..., alias="field249", description="")
+    field_250: Optional[bool] = Field(None, alias="field250", description="")
+    field_251: Optional[Class71] = Field(None, alias="field251")
     field107: constr(min_length=1, max_length=36) = Field(..., description="", example="")
 
 
 class Class71(Class35):
     modelType: Literal["Class71"] = "Class71"
     field153: Optional[Class70] = None
-    field252: Optional[list[Class31]] = Field(None, alias="field252", description="")
+    field_252: Optional[list[Class31]] = Field(None, alias="field252", description="")
 
 
 class Class72(Class35):
     modelType: Literal["Class72"] = "Class72"
     field253: Optional[Class96] = None
     field104: Class20
-    field254: Optional[float] = Field(None, alias="field254")
-    field255: Optional[float] = Field(None, alias="field255")
+    field_254: Optional[float] = Field(None, alias="field254")
+    field_255: Optional[float] = Field(None, alias="field255")
 
 
 class Class73(Class35):
     modelType: Literal["Class73"] = "Class73"
     field174: Optional[Class109] = None
-    field256: Optional[bool] = Field(False, alias="field256", description="")
-    field257: Optional[float] = Field(None, alias="field257", description="")
-    field258: Optional[float] = Field(None, alias="field258", description="")
+    field_256: Optional[bool] = Field(False, alias="field256", description="")
+    field_257: Optional[float] = Field(None, alias="field257", description="")
+    field_258: Optional[float] = Field(None, alias="field258", description="")
 
 
 class Class74(Class37):
     modelType: Literal["Class74"] = "Class74"
-    field259: Optional[bool] = Field(None, alias="field259", description="")
-    field260: Optional[float] = Field(None, alias="field260", description="")
+    field_259: Optional[bool] = Field(None, alias="field259", description="")
+    field_260: Optional[float] = Field(None, alias="field260", description="")
 
 
 class Class75(Class37):
     modelType: Literal["Class75"] = "Class75"
-    field235: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = Field(
+    field_235: Optional[constr(regex="[a-f0-9]{8}(?:-[a-f0-9]{4}){4}[a-f0-9]{8}")] = Field(
         None, alias="field235"
     )
 
 
 class Class76(Class37):
     modelType: Literal["Class76"] = "Class76"
-    field261: Optional[float] = Field(None, alias="field261", description="")
-    field262: Optional[float] = Field(None, alias="field262", description="")
+    field_261: Optional[float] = Field(None, alias="field261", description="")
+    field_262: Optional[float] = Field(None, alias="field262", description="")
 
 
 class Class77(Class37):
     modelType: Literal["Class77"] = "Class77"
-    field227: str = Field(..., alias="field227")
-    field263: Optional[str] = Field(None, alias="field263")
-    field184: Class16 = Field(..., alias="field184", description="")
-    field212: float = Field(..., alias="field212")
-    field213: float = Field(..., alias="field213")
-    field214: float = Field(..., alias="field214")
-    field116: datetime = Field(..., alias="field116", description="")
+    field_227: str = Field(..., alias="field227")
+    field_263: Optional[str] = Field(None, alias="field263")
+    field_184: Class16 = Field(..., alias="field184", description="")
+    field_212: float = Field(..., alias="field212")
+    field_213: float = Field(..., alias="field213")
+    field_214: float = Field(..., alias="field214")
+    field_116: datetime = Field(..., alias="field116", description="")
 
 
 class Class78(Class51):
@@ -800,7 +800,7 @@ class Class80(Class51):
 
 class Class81(Class51):
     modelType: Literal["Class81"] = "Class81"
-    field264: Optional[str] = Field(None, alias="field264", description="")
+    field_264: Optional[str] = Field(None, alias="field264", description="")
     field107: constr(min_length=1, max_length=36) = Field(..., description="", example="")
 
 
@@ -811,26 +811,26 @@ class Class82(Class51):
 
 class Class83(Class52):
     modelType: Literal["Class83"] = "Class83"
-    field265: Optional[confloat(ge=-90.0, le=90.0)] = Field(0, alias="field265", description="")
-    field266: Optional[confloat(ge=-90.0, le=90.0)] = Field(90, alias="field266", description="")
+    field_265: Optional[confloat(ge=-90.0, le=90.0)] = Field(0, alias="field265", description="")
+    field_266: Optional[confloat(ge=-90.0, le=90.0)] = Field(90, alias="field266", description="")
 
 
 class Class84(Class52):
     modelType: Literal["Class84"] = "Class84"
-    field265: Optional[confloat(ge=0.0, le=360.0)] = Field(0, alias="field265", description="")
-    field266: Optional[confloat(ge=0.0, le=360.0)] = Field(360, alias="field266", description="")
-    field267: Optional[bool] = Field(False, alias="field267", description="")
+    field_265: Optional[confloat(ge=0.0, le=360.0)] = Field(0, alias="field265", description="")
+    field_266: Optional[confloat(ge=0.0, le=360.0)] = Field(360, alias="field266", description="")
+    field_267: Optional[bool] = Field(False, alias="field267", description="")
 
 
 class Class85(Class52):
     modelType: Literal["Class85"] = "Class85"
-    field265: Optional[confloat(ge=-90.0, le=90.0)] = Field(-90, alias="field265", description="")
-    field266: Optional[confloat(ge=-90.0, le=90.0)] = Field(90, alias="field266", description="")
+    field_265: Optional[confloat(ge=-90.0, le=90.0)] = Field(-90, alias="field265", description="")
+    field_266: Optional[confloat(ge=-90.0, le=90.0)] = Field(90, alias="field266", description="")
 
 
 class Class86(Class52):
     modelType: Literal["Class86"] = "Class86"
-    field268: Optional[confloat(ge=-90.0, le=0.0)] = Field(-6, alias="field268", description="")
+    field_268: Optional[confloat(ge=-90.0, le=0.0)] = Field(-6, alias="field268", description="")
 
 
 class Class87(Class52):
@@ -839,93 +839,93 @@ class Class87(Class52):
 
 class Class88(Class52):
     modelType: Literal["Class88"] = "Class88"
-    field265: confloat(ge=-360.0, le=360.0) = Field(..., alias="field265", description="")
-    field266: Optional[confloat(ge=-360.0, le=360.0)] = Field(
+    field_265: confloat(ge=-360.0, le=360.0) = Field(..., alias="field265", description="")
+    field_266: Optional[confloat(ge=-360.0, le=360.0)] = Field(
         None, alias="field266", description=""
     )
-    field269: bool = Field(..., alias="field269", description="")
+    field_269: bool = Field(..., alias="field269", description="")
 
 
 class Class89(Class52):
     modelType: Literal["Class89"] = "Class89"
-    field265: confloat(ge=-360.0, le=360.0) = Field(..., alias="field265", description="")
-    field266: Optional[confloat(ge=-360.0, le=360.0)] = Field(
+    field_265: confloat(ge=-360.0, le=360.0) = Field(..., alias="field265", description="")
+    field_266: Optional[confloat(ge=-360.0, le=360.0)] = Field(
         None, alias="field266", description=""
     )
 
 
 class Class90(Class52):
     modelType: Literal["Class90"] = "Class90"
-    field265: Optional[confloat(ge=-360.0, le=360.0)] = Field(
+    field_265: Optional[confloat(ge=-360.0, le=360.0)] = Field(
         None, alias="field265", description=""
     )
-    field266: Optional[confloat(ge=-360.0, le=360.0)] = Field(
+    field_266: Optional[confloat(ge=-360.0, le=360.0)] = Field(
         None, alias="field266", description=""
     )
 
 
 class Class91(Class52):
     modelType: Literal["Class91"] = "Class91"
-    field270: list[str] = Field(..., alias="field270", description="", min_items=1)
+    field_270: list[str] = Field(..., alias="field270", description="", min_items=1)
 
 
 class Class92(Class52):
     modelType: Literal["Class92"] = "Class92"
-    field271: list[Class22] = Field(..., alias="field271", description="")
+    field_271: list[Class22] = Field(..., alias="field271", description="")
 
 
 class Class93(Class52):
     modelType: Literal["Class93"] = "Class93"
-    field272: list[str] = Field(..., alias="field272", description="", min_items=1)
+    field_272: list[str] = Field(..., alias="field272", description="", min_items=1)
 
 
 class Class94(Class52):
     modelType: Literal["Class94"] = "Class94"
-    field273: list[Class21] = Field(..., alias="field273", description="")
+    field_273: list[Class21] = Field(..., alias="field273", description="")
 
 
 class Class95(Class52):
     modelType: Literal["Class95"] = "Class95"
-    field274: Optional[datetime] = Field(None, alias="field274", description="", example="")
-    field275: datetime = Field(..., alias="field275", description="", example="")
+    field_274: Optional[datetime] = Field(None, alias="field274", description="", example="")
+    field_275: datetime = Field(..., alias="field275", description="", example="")
 
 
 class Class96(Class53):
     modelType: Literal["Class96"] = "Class96"
-    field224: Optional[Class6] = Field(None, alias="field224")
+    field_224: Optional[Class6] = Field(None, alias="field224")
     field276: Optional[Class72] = None
-    field277: Optional[Class109] = Field(None, alias="field277")
-    field278: Optional[Class110] = Field(None, alias="field278")
-    field184: Optional[Class16] = Field(None, alias="field184", description="")
-    field225: float = Field(..., alias="field225", description="", example=1.1)
-    field279: Optional[float] = Field(None, alias="field279", description="", example=1.1)
-    field226: float = Field(..., alias="field226", description="", example=1.1)
-    field280: Optional[float] = Field(None, alias="field280", description="", example=1.1)
-    field281: Optional[float] = Field(None, alias="field281", description="", example=1.1)
-    field282: Optional[float] = Field(None, alias="field282", description="", example=1.1)
-    field283: Optional[list[Class73]] = Field(None, alias="field283")
+    field_277: Optional[Class109] = Field(None, alias="field277")
+    field_278: Optional[Class110] = Field(None, alias="field278")
+    field_184: Optional[Class16] = Field(None, alias="field184", description="")
+    field_225: float = Field(..., alias="field225", description="", example=1.1)
+    field_279: Optional[float] = Field(None, alias="field279", description="", example=1.1)
+    field_226: float = Field(..., alias="field226", description="", example=1.1)
+    field_280: Optional[float] = Field(None, alias="field280", description="", example=1.1)
+    field_281: Optional[float] = Field(None, alias="field281", description="", example=1.1)
+    field_282: Optional[float] = Field(None, alias="field282", description="", example=1.1)
+    field_283: Optional[list[Class73]] = Field(None, alias="field283")
 
 
 class Class97(Class53):
     modelType: Literal["Class97"] = "Class97"
-    field224: Optional[Class6] = Field(None, alias="field224")
-    field284: float = Field(..., alias="field284", description="", example=1.1)
-    field285: Optional[float] = Field(None, alias="field285", description="", example=1.1)
-    field286: float = Field(..., alias="field286", description="", example=1.1)
-    field287: Optional[float] = Field(None, alias="field287", description="", example=1.1)
-    field281: Optional[float] = Field(None, alias="field281", description="", example=1.1)
-    field282: Optional[float] = Field(None, alias="field282", description="", example=1.1)
+    field_224: Optional[Class6] = Field(None, alias="field224")
+    field_284: float = Field(..., alias="field284", description="", example=1.1)
+    field_285: Optional[float] = Field(None, alias="field285", description="", example=1.1)
+    field_286: float = Field(..., alias="field286", description="", example=1.1)
+    field_287: Optional[float] = Field(None, alias="field287", description="", example=1.1)
+    field_281: Optional[float] = Field(None, alias="field281", description="", example=1.1)
+    field_282: Optional[float] = Field(None, alias="field282", description="", example=1.1)
 
 
 class Class98(Class53):
     modelType: Literal["Class98"] = "Class98"
     field174: Optional[Class109] = None
-    field288: Optional[float] = Field(None, alias="field288", description="", example=10.0)
-    field289: Optional[float] = Field(None, alias="field289", description="", example=10.0)
-    field290: Optional[float] = Field(None, alias="field290", description="", example=10.0)
-    field291: Optional[float] = Field(None, alias="field291", description="", example=10.0)
-    field292: Optional[float] = Field(None, alias="field292", description="", example=10.0)
-    field293: Optional[float] = Field(None, alias="field293", description="", example=10.0)
+    field_288: Optional[float] = Field(None, alias="field288", description="", example=10.0)
+    field_289: Optional[float] = Field(None, alias="field289", description="", example=10.0)
+    field_290: Optional[float] = Field(None, alias="field290", description="", example=10.0)
+    field_291: Optional[float] = Field(None, alias="field291", description="", example=10.0)
+    field_292: Optional[float] = Field(None, alias="field292", description="", example=10.0)
+    field_293: Optional[float] = Field(None, alias="field293", description="", example=10.0)
 
 
 class Class99(Class54):
@@ -959,52 +959,52 @@ class Class103(Class54):
 class Class104(Class54):
     modelType: Literal["Class104"] = "Class104"
     field118: Optional[str] = Field("Orientation Change", description="")
-    field295: Optional[float] = Field(None, alias="field295")
-    field296: Optional[float] = Field(None, alias="field296")
-    field297: Optional[float] = Field(None, alias="field297")
+    field_295: Optional[float] = Field(None, alias="field295")
+    field_296: Optional[float] = Field(None, alias="field296")
+    field_297: Optional[float] = Field(None, alias="field297")
 
 
 class Class105(Class54):
     modelType: Literal["Class105"] = "Class105"
     field118: Optional[str] = Field("Transmission", description="")
-    field298: bool = Field(..., alias="field298", description="")
-    field299: Optional[bool] = Field(None, alias="field299", description="")
-    field300: Optional[float] = Field(None, alias="field300")
-    field301: Optional[float] = Field(None, alias="field301")
-    field302: Optional[float] = Field(None, alias="field302", description="")
-    field303: Optional[float] = Field(None, alias="field303", description="")
+    field_298: bool = Field(..., alias="field298", description="")
+    field_299: Optional[bool] = Field(None, alias="field299", description="")
+    field_300: Optional[float] = Field(None, alias="field300")
+    field_301: Optional[float] = Field(None, alias="field301")
+    field_302: Optional[float] = Field(None, alias="field302", description="")
+    field_303: Optional[float] = Field(None, alias="field303", description="")
 
 
 class Class106(Class54):
     modelType: Literal["Class106"] = "Class106"
     field118: Optional[str] = Field("Breakup Event", description="")
-    field304: Optional[bool] = Field(None, alias="field304", description="")
-    field305: Optional[bool] = Field(None, alias="field305", description="")
+    field_304: Optional[bool] = Field(None, alias="field304", description="")
+    field_305: Optional[bool] = Field(None, alias="field305", description="")
 
 
 class Class107(Class55):
     modelType: Literal["Class107"] = "Class107"
-    field198: Optional[Class8] = Field("LIGHT", alias="field198")
-    field306: Optional[str] = Field(None, alias="field306", description="", example="")
-    field307: int = Field(..., alias="field307", example=6)
-    field234: float = Field(..., alias="field234", description="")
-    field308: Optional[float] = Field(None, alias="field308", description="", example=15.0)
+    field_198: Optional[Class8] = Field("LIGHT", alias="field198")
+    field_306: Optional[str] = Field(None, alias="field306", description="", example="")
+    field_307: int = Field(..., alias="field307", example=6)
+    field_234: float = Field(..., alias="field234", description="")
+    field_308: Optional[float] = Field(None, alias="field308", description="", example=15.0)
     field309: Optional[int] = Field(None, description="", example=4)
-    field310: Class4 = Field(..., alias="field310")
+    field_310: Class4 = Field(..., alias="field310")
 
 
 class Class108(Class55):
     modelType: Literal["Class108"] = "Class108"
-    field311: Optional[float] = Field(None, alias="field311", description="")
+    field_311: Optional[float] = Field(None, alias="field311", description="")
 
 
 class Class109(Class56):
     modelType: Literal["Class109"] = "Class109"
-    field312: Optional[Class70] = Field(None, alias="field312")
-    field313: Optional[list[Class72]] = Field(None, alias="field313")
-    field314: Class32 = Field(..., alias="field314")
+    field_312: Optional[Class70] = Field(None, alias="field312")
+    field_313: Optional[list[Class72]] = Field(None, alias="field313")
+    field_314: Class32 = Field(..., alias="field314")
     field315: Class96
-    field316: Optional[Class98] = Field(None, alias="field316")
+    field_316: Optional[Class98] = Field(None, alias="field316")
     field107: constr(min_length=1, max_length=36) = Field(..., description="", example="")
 
 
@@ -1015,154 +1015,154 @@ class Class110(Class56):
 
 class Class111(Class57):
     modelType: Literal["Class111"] = "Class111"
-    field317: float = Field(..., alias="field317", description="", example=1.0)
-    field318: float = Field(..., alias="field318", description="", example=30.0)
-    field319: float = Field(..., alias="field319", description="", example=20.0)
-    field320: float = Field(..., alias="field320", description="")
-    field321: float = Field(..., alias="field321", description="")
-    field322: float = Field(..., alias="field322", description="")
-    field323: Optional[list[Class70]] = Field(None, alias="field323")
-    field185: list[AnyClass131] = Field(..., alias="field185", description="")
+    field_317: float = Field(..., alias="field317", description="", example=1.0)
+    field_318: float = Field(..., alias="field318", description="", example=30.0)
+    field_319: float = Field(..., alias="field319", description="", example=20.0)
+    field_320: float = Field(..., alias="field320", description="")
+    field_321: float = Field(..., alias="field321", description="")
+    field_322: float = Field(..., alias="field322", description="")
+    field_323: Optional[list[Class70]] = Field(None, alias="field323")
+    field_185: list[AnyClass131] = Field(..., alias="field185", description="")
 
 
 class Class112(Class57):
     modelType: Literal["Class112"] = "Class112"
-    field320: float = Field(..., alias="field320", description="")
-    field321: float = Field(..., alias="field321", description="")
-    field322: float = Field(..., alias="field322", description="")
-    field317: float = Field(..., alias="field317", description="", example=1.0)
-    field318: float = Field(..., alias="field318", description="", example=30.0)
-    field319: float = Field(..., alias="field319", description="", example=20.0)
-    field324: Optional[float] = Field(None, alias="field324", description="", example=0.01)
-    field325: Optional[float] = Field(None, alias="field325", description="", example=0.01)
+    field_320: float = Field(..., alias="field320", description="")
+    field_321: float = Field(..., alias="field321", description="")
+    field_322: float = Field(..., alias="field322", description="")
+    field_317: float = Field(..., alias="field317", description="", example=1.0)
+    field_318: float = Field(..., alias="field318", description="", example=30.0)
+    field_319: float = Field(..., alias="field319", description="", example=20.0)
+    field_324: Optional[float] = Field(None, alias="field324", description="", example=0.01)
+    field_325: Optional[float] = Field(None, alias="field325", description="", example=0.01)
 
 
 class Class113(Class57):
     modelType: Literal["Class113"] = "Class113"
-    field320: float = Field(..., alias="field320", description="")
-    field321: float = Field(..., alias="field321", description="")
-    field322: float = Field(..., alias="field322", description="")
-    field317: float = Field(..., alias="field317", description="", example=1.0)
-    field318: float = Field(..., alias="field318", description="", example=30.0)
-    field319: float = Field(..., alias="field319", description="", example=20.0)
-    field324: Optional[float] = Field(None, alias="field324", description="", example=0.01)
-    field325: Optional[float] = Field(None, alias="field325", description="", example=0.01)
-    field326: Optional[bool] = Field(None, alias="field326", description="")
+    field_320: float = Field(..., alias="field320", description="")
+    field_321: float = Field(..., alias="field321", description="")
+    field_322: float = Field(..., alias="field322", description="")
+    field_317: float = Field(..., alias="field317", description="", example=1.0)
+    field_318: float = Field(..., alias="field318", description="", example=30.0)
+    field_319: float = Field(..., alias="field319", description="", example=20.0)
+    field_324: Optional[float] = Field(None, alias="field324", description="", example=0.01)
+    field_325: Optional[float] = Field(None, alias="field325", description="", example=0.01)
+    field_326: Optional[bool] = Field(None, alias="field326", description="")
 
 
 class Class114(Class58):
     modelType: Literal["Class114"] = "Class114"
-    field327: Optional[int] = Field(0, alias="field327", description="")
-    field328: Optional[list[str]] = Field(None, alias="field328")
-    field329: Optional[float] = Field(None, alias="field329", description="")
-    field330: Optional[float] = Field(None, alias="field330")
-    field331: Optional[float] = Field(None, alias="field331")
-    field332: Optional[float] = Field(None, alias="field332")
-    field333: Optional[float] = Field(None, alias="field333")
-    field334: Optional[float] = Field(None, alias="field334", description="", example=4.0)
-    field335: Optional[float] = Field(None, alias="field335", description="", example=4.0)
-    field336: Optional[float] = Field(None, alias="field336", example=200.0)
-    field337: Optional[float] = Field(None, alias="field337", description="", example=4.0)
-    field338: Optional[confloat(ge=0.0)] = Field(
+    field_327: Optional[int] = Field(0, alias="field327", description="")
+    field_328: Optional[list[str]] = Field(None, alias="field328")
+    field_329: Optional[float] = Field(None, alias="field329", description="")
+    field_330: Optional[float] = Field(None, alias="field330")
+    field_331: Optional[float] = Field(None, alias="field331")
+    field_332: Optional[float] = Field(None, alias="field332")
+    field_333: Optional[float] = Field(None, alias="field333")
+    field_334: Optional[float] = Field(None, alias="field334", description="", example=4.0)
+    field_335: Optional[float] = Field(None, alias="field335", description="", example=4.0)
+    field_336: Optional[float] = Field(None, alias="field336", example=200.0)
+    field_337: Optional[float] = Field(None, alias="field337", description="", example=4.0)
+    field_338: Optional[confloat(ge=0.0)] = Field(
         None, alias="field338", description="", example=1e-06
     )
-    field339: Optional[float] = Field(None, alias="field339", description="", example=3600.0)
-    field340: Optional[float] = Field(None, alias="field340", description="", example=4.0)
-    field341: Optional[float] = Field(None, alias="field341", description="", example=1)
-    field342: float = Field(..., alias="field342", description="", example=3.0)
-    field343: Optional[float] = Field(None, alias="field343", description="", example=700.0)
-    field344: Optional[float] = Field(None, alias="field344", description="", example=5.0)
-    field345: Optional[float] = Field(None, alias="field345", example=1.0)
-    field346: Optional[float] = Field(None, alias="field346", description="", example=10.0)
-    field347: Optional[bool] = Field(False, alias="field347", description="")
-    field201: Optional[list[Class24]] = Field(None, alias="field201", description="")
+    field_339: Optional[float] = Field(None, alias="field339", description="", example=3600.0)
+    field_340: Optional[float] = Field(None, alias="field340", description="", example=4.0)
+    field_341: Optional[float] = Field(None, alias="field341", description="", example=1)
+    field_342: float = Field(..., alias="field342", description="", example=3.0)
+    field_343: Optional[float] = Field(None, alias="field343", description="", example=700.0)
+    field_344: Optional[float] = Field(None, alias="field344", description="", example=5.0)
+    field_345: Optional[float] = Field(None, alias="field345", example=1.0)
+    field_346: Optional[float] = Field(None, alias="field346", description="", example=10.0)
+    field_347: Optional[bool] = Field(False, alias="field347", description="")
+    field_201: Optional[list[Class24]] = Field(None, alias="field201", description="")
 
 
 class Class115(Class58):
     modelType: Literal["Class115"] = "Class115"
-    field329: Optional[float] = Field(None, alias="field329", description="")
-    field330: Optional[float] = Field(None, alias="field330")
-    field331: Optional[float] = Field(None, alias="field331")
-    field332: Optional[float] = Field(None, alias="field332")
-    field333: Optional[float] = Field(None, alias="field333")
-    field334: Optional[float] = Field(None, alias="field334", description="", example=4.0)
-    field336: Optional[float] = Field(None, alias="field336", example=200.0)
-    field338: Optional[float] = Field(None, alias="field338", description="", example=1e-06)
-    field339: Optional[float] = Field(None, alias="field339", description="", example=3600.0)
-    field341: Optional[float] = Field(None, alias="field341", description="", example=1)
-    field342: float = Field(..., alias="field342", description="", example=3.0)
-    field348: Optional[float] = Field(None, alias="field348", description="", example=420.0)
-    field349: Optional[float] = Field(None, alias="field349", description="", example=870.0)
-    field343: Optional[float] = Field(None, alias="field343", description="", example=700.0)
-    field344: Optional[float] = Field(None, alias="field344", description="", example=5.0)
-    field345: Optional[float] = Field(None, alias="field345", example=1.0)
+    field_329: Optional[float] = Field(None, alias="field329", description="")
+    field_330: Optional[float] = Field(None, alias="field330")
+    field_331: Optional[float] = Field(None, alias="field331")
+    field_332: Optional[float] = Field(None, alias="field332")
+    field_333: Optional[float] = Field(None, alias="field333")
+    field_334: Optional[float] = Field(None, alias="field334", description="", example=4.0)
+    field_336: Optional[float] = Field(None, alias="field336", example=200.0)
+    field_338: Optional[float] = Field(None, alias="field338", description="", example=1e-06)
+    field_339: Optional[float] = Field(None, alias="field339", description="", example=3600.0)
+    field_341: Optional[float] = Field(None, alias="field341", description="", example=1)
+    field_342: float = Field(..., alias="field342", description="", example=3.0)
+    field_348: Optional[float] = Field(None, alias="field348", description="", example=420.0)
+    field_349: Optional[float] = Field(None, alias="field349", description="", example=870.0)
+    field_343: Optional[float] = Field(None, alias="field343", description="", example=700.0)
+    field_344: Optional[float] = Field(None, alias="field344", description="", example=5.0)
+    field_345: Optional[float] = Field(None, alias="field345", example=1.0)
     field350: Optional[float] = Field(None, description="", example=1)
-    field351: Optional[float] = Field(None, alias="field351", description="")
-    field347: Optional[bool] = Field(False, alias="field347", description="")
-    field201: Optional[list[Class24]] = Field(None, alias="field201", description="")
+    field_351: Optional[float] = Field(None, alias="field351", description="")
+    field_347: Optional[bool] = Field(False, alias="field347", description="")
+    field_201: Optional[list[Class24]] = Field(None, alias="field201", description="")
 
 
 class Class116(Class58):
     modelType: Literal["Class116"] = "Class116"
-    field329: Optional[float] = Field(None, alias="field329", description="")
-    field330: Optional[float] = Field(None, alias="field330")
-    field331: Optional[float] = Field(None, alias="field331")
-    field332: Optional[float] = Field(None, alias="field332")
-    field333: Optional[float] = Field(None, alias="field333")
-    field334: Optional[float] = Field(None, alias="field334", description="", example=4.0)
-    field336: Optional[float] = Field(None, alias="field336", example=200.0)
-    field338: Optional[float] = Field(None, alias="field338", description="", example=1e-06)
-    field339: Optional[float] = Field(None, alias="field339", description="", example=3600.0)
-    field341: Optional[float] = Field(None, alias="field341", description="", example=1)
-    field342: float = Field(..., alias="field342", description="", example=3.0)
-    field348: Optional[float] = Field(None, alias="field348", description="", example=420.0)
-    field349: Optional[float] = Field(None, alias="field349", description="", example=870.0)
-    field343: Optional[float] = Field(None, alias="field343", description="", example=700.0)
-    field344: Optional[float] = Field(None, alias="field344", description="", example=5.0)
-    field345: Optional[float] = Field(None, alias="field345", example=1.0)
+    field_329: Optional[float] = Field(None, alias="field329", description="")
+    field_330: Optional[float] = Field(None, alias="field330")
+    field_331: Optional[float] = Field(None, alias="field331")
+    field_332: Optional[float] = Field(None, alias="field332")
+    field_333: Optional[float] = Field(None, alias="field333")
+    field_334: Optional[float] = Field(None, alias="field334", description="", example=4.0)
+    field_336: Optional[float] = Field(None, alias="field336", example=200.0)
+    field_338: Optional[float] = Field(None, alias="field338", description="", example=1e-06)
+    field_339: Optional[float] = Field(None, alias="field339", description="", example=3600.0)
+    field_341: Optional[float] = Field(None, alias="field341", description="", example=1)
+    field_342: float = Field(..., alias="field342", description="", example=3.0)
+    field_348: Optional[float] = Field(None, alias="field348", description="", example=420.0)
+    field_349: Optional[float] = Field(None, alias="field349", description="", example=870.0)
+    field_343: Optional[float] = Field(None, alias="field343", description="", example=700.0)
+    field_344: Optional[float] = Field(None, alias="field344", description="", example=5.0)
+    field_345: Optional[float] = Field(None, alias="field345", example=1.0)
     field350: Optional[float] = Field(None, description="", example=1)
-    field351: Optional[float] = Field(None, alias="field351", description="", example=16.0)
-    field352: Optional[list[bool]] = Field(
+    field_351: Optional[float] = Field(None, alias="field351", description="", example=16.0)
+    field_352: Optional[list[bool]] = Field(
         None, alias="field352", description="", max_items=4, min_items=4
     )
-    field347: Optional[bool] = Field(False, alias="field347", description="")
-    field201: Optional[list[Class24]] = Field(None, alias="field201", description="")
+    field_347: Optional[bool] = Field(False, alias="field347", description="")
+    field_201: Optional[list[Class24]] = Field(None, alias="field201", description="")
 
 
 class Class117(Class58):
     modelType: Literal["Class117"] = "Class117"
-    field342: float = Field(..., alias="field342", description="", example=3.0)
-    field353: Optional[float] = Field(None, alias="field353", description="")
-    field354: Optional[float] = Field(None, alias="field354", description="")
-    field355: Optional[float] = Field(None, alias="field355", description="")
-    field356: Optional[float] = Field(None, alias="field356", description="")
-    field357: Optional[float] = Field(None, alias="field357", description="")
-    field176: Optional[float] = Field(None, alias="field176", description="")
-    field358: Optional[list[confloat(ge=0.0, le=360.0)]] = Field(
+    field_342: float = Field(..., alias="field342", description="", example=3.0)
+    field_353: Optional[float] = Field(None, alias="field353", description="")
+    field_354: Optional[float] = Field(None, alias="field354", description="")
+    field_355: Optional[float] = Field(None, alias="field355", description="")
+    field_356: Optional[float] = Field(None, alias="field356", description="")
+    field_357: Optional[float] = Field(None, alias="field357", description="")
+    field_176: Optional[float] = Field(None, alias="field176", description="")
+    field_358: Optional[list[confloat(ge=0.0, le=360.0)]] = Field(
         None, alias="field358", description=""
     )
-    field359: Optional[list[confloat(ge=0.0, le=360.0)]] = Field(
+    field_359: Optional[list[confloat(ge=0.0, le=360.0)]] = Field(
         None, alias="field359", description=""
     )
-    field360: Optional[int] = Field(None, alias="field360", description="")
-    field361: Optional[str] = Field(None, alias="field361", description="", example="")
-    field362: Optional[list[str]] = Field(None, alias="field362", description="")
-    field363: Optional[float] = Field(None, alias="field363", description="")
-    field364: Optional[list[Class24]] = Field(None, alias="field364", description="")
-    field365: Optional[float] = Field(None, alias="field365", description="")
-    field201: Optional[list[Class24]] = Field(None, alias="field201", description="")
+    field_360: Optional[int] = Field(None, alias="field360", description="")
+    field_361: Optional[str] = Field(None, alias="field361", description="", example="")
+    field_362: Optional[list[str]] = Field(None, alias="field362", description="")
+    field_363: Optional[float] = Field(None, alias="field363", description="")
+    field_364: Optional[list[Class24]] = Field(None, alias="field364", description="")
+    field_365: Optional[float] = Field(None, alias="field365", description="")
+    field_201: Optional[list[Class24]] = Field(None, alias="field201", description="")
 
 
 class Class118(Class59):
     modelType: Literal["Class118"] = "Class118"
-    field366: Class16 = Field(..., alias="field366")
-    field367: list[Class65] = Field(..., alias="field367", description="", min_items=1)
+    field_366: Class16 = Field(..., alias="field366")
+    field_367: list[Class65] = Field(..., alias="field367", description="", min_items=1)
 
 
 class Class119(Class59):
     modelType: Literal["Class119"] = "Class119"
-    field224: Class6 = Field(..., alias="field224")
-    field368: list[Class68] = Field(..., alias="field368", description="")
+    field_224: Class6 = Field(..., alias="field224")
+    field_368: list[Class68] = Field(..., alias="field368", description="")
 
 
 class Class120(Class59):
@@ -1176,20 +1176,20 @@ class Class120(Class59):
 
 class Class121(Class107):
     modelType: Literal["Class121"] = "Class121"
-    field372: Optional[conint(ge=0, le=2)] = Field(0, alias="field372", description="")
-    field373: Optional[conint(ge=0, le=2)] = Field(0, alias="field373", description="")
-    field374: Optional[conint(ge=0, le=1)] = Field(0, alias="field374", description="")
-    field375: Optional[conint(ge=0, le=2)] = Field(0, alias="field375", description="")
-    field376: Optional[confloat(ge=0.0, le=600.0)] = Field(0.0, alias="field376", description="")
-    field377: Optional[conint(ge=1, le=99)] = Field(1, alias="field377", description="")
-    field378: Optional[conint(ge=0, le=64)] = Field(0, alias="field378", description="")
-    field379: Optional[conint(ge=0, le=1)] = Field(1, alias="field379", description="")
-    field380: Optional[conint(ge=0, le=1)] = Field(0, alias="field380", description="")
-    field381: Optional[conint(ge=0, le=1)] = Field(0, alias="field381", description="")
-    field382: Optional[conint(ge=0, le=1)] = Field(0, alias="field382", description="")
-    field383: Optional[conint(ge=0, le=1)] = Field(0, alias="field383", description="")
-    field384: Optional[conint(ge=0, le=1)] = Field(0, alias="field384", description="")
-    field385: Optional[conint(ge=0, le=1)] = Field(1, alias="field385", description="")
+    field_372: Optional[conint(ge=0, le=2)] = Field(0, alias="field372", description="")
+    field_373: Optional[conint(ge=0, le=2)] = Field(0, alias="field373", description="")
+    field_374: Optional[conint(ge=0, le=1)] = Field(0, alias="field374", description="")
+    field_375: Optional[conint(ge=0, le=2)] = Field(0, alias="field375", description="")
+    field_376: Optional[confloat(ge=0.0, le=600.0)] = Field(0.0, alias="field376", description="")
+    field_377: Optional[conint(ge=1, le=99)] = Field(1, alias="field377", description="")
+    field_378: Optional[conint(ge=0, le=64)] = Field(0, alias="field378", description="")
+    field_379: Optional[conint(ge=0, le=1)] = Field(1, alias="field379", description="")
+    field_380: Optional[conint(ge=0, le=1)] = Field(0, alias="field380", description="")
+    field_381: Optional[conint(ge=0, le=1)] = Field(0, alias="field381", description="")
+    field_382: Optional[conint(ge=0, le=1)] = Field(0, alias="field382", description="")
+    field_383: Optional[conint(ge=0, le=1)] = Field(0, alias="field383", description="")
+    field_384: Optional[conint(ge=0, le=1)] = Field(0, alias="field384", description="")
+    field_385: Optional[conint(ge=0, le=1)] = Field(1, alias="field385", description="")
     field386: Optional[conint(ge=0, le=1)] = Field(0, description="")
     field387: Optional[conint(ge=0, le=4)] = Field(0, description="")
 

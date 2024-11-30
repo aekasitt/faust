@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-import mymodels.models as mc
+import mymodels.strict.models as mc
 from mymodels.tools import (
     dump_json_as,
     dump_json_file_as,
