@@ -1,0 +1,46 @@
+[
+    {
+        "modelType": "Class90",
+        "field101": "0.50.1",
+        "field149": "field21",
+        "field265": 10.0
+    },
+    {
+        "modelType": "Class89",
+        "field101": "0.50.1",
+        "field149": "field21",
+        "field265": 5.0
+    },
+    {
+        "modelType": "Class86",
+        "field101": "0.50.1",
+        "field149": "field21",
+        "field268": -6.0
+    },
+    {
+        "modelType": "Class87",
+        "field101": "0.50.1",
+        "field149": "field21"
+    },
+    {
+        "modelType": "Class83",
+        "field101": "0.50.1",
+        "field149": "field21",
+        "field265": 25.0,
+        "field266": 80.0
+    },
+    {
+        "modelType": "Class84",
+        "field101": "0.50.1",
+        "field149": "field21",
+        "field265": 100.0,
+        "field266": 305.0
+    },
+    {
+        "modelType": "Class95",
+        "field101": "0.50.1",
+        "field149": "field21",
+        "field274": "2023-06-20T06:08:00.000000Z",
+        "field275": "2023-06-20T06:11:00.000000Z"
+    }
+]

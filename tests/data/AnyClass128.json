@@ -1,0 +1,98 @@
+[
+  {
+    "field114": 0,
+    "field107": "field22",
+    "modelType": "Class109",
+    "field101": "0.50.1",
+    "field173": "2022-03-08T23:44:06.746000Z",
+    "field172": {
+      "field114": 0,
+      "modelType": "Class111",
+      "field101": "0.50.1",
+      "field118": "field22",
+      "field185": [],
+      "field320": 18.484744,
+      "field321": -67.148942,
+      "field322": 0.1,
+      "field317": 3.2,
+      "field318": 30.0,
+      "field319": 20.0
+    },
+    "field178": [
+      {
+        "field114": 0,
+        "modelType": "Class118",
+        "field101": "0.50.1",
+        "field175": {
+          "modelType": "Class69",
+          "field101": "0.50.1",
+          "field227": "00001",
+          "field230": 0.21,
+          "field231": 2.1
+        },
+        "field118": "XXX",
+        "field366": "field66",
+        "field367": [
+          {
+            "modelType": "Class65",
+            "field212": -18522.757635898277,
+            "field213": 36502.40790348304,
+            "field214": 9801.369043287086,
+            "field215": -2.761076215293706,
+            "field216": -1.3392438584037434,
+            "field217": -0.23028619145229348,
+            "field116": "2022-03-08T23:44:06.746000Z"
+          }
+        ]
+      }
+    ],
+    "field315": {
+      "modelType": "Class96",
+      "field173": "2022-03-08T23:44:06.746000Z",
+      "field225": 12.418539933606215,
+      "field226": 120.55693157909337
+    },
+    "field314": {
+      "field125": 256.0,
+      "field126": 256.0,
+      "field127": 120.525,
+      "field128": 12.428075,
+      "field129": "field62",
+      "field130": "field63",
+      "field131": 0.00090767777777778,
+      "field132": -1.8022666666667e-05,
+      "field133": -1.7826638888889e-05,
+      "field134": -0.00090658888888889,
+      "field135": 512.0,
+      "field136": 512.0,
+      "field137": "DEGREES",
+      "field138": "DEGREES"
+    },
+    "field312": {
+      "modelType": "Class70",
+      "field235": "80d2bff7-a93f-4200-821c-4ab86d08c59e",
+      "field248": "80d2bff7-a93f-4200-821c-4ab86d08c59e",
+      "field249": 7,
+      "field247": 0,
+      "field244": 0.0,
+      "field243": 0.0,
+      "field107": "field22",
+      "field233": "2022-03-08T23:44:06.746000Z",
+      "field234": 1.0,
+      "field241": "field29",
+      "field172": {
+        "field114": 0,
+        "modelType": "Class111",
+        "field101": "0.50.1",
+        "field118": "field22",
+        "field185": [],
+        "field320": 18.484744,
+        "field321": -67.148942,
+        "field322": 0.1,
+        "field317": 3.2,
+        "field318": 30.0,
+        "field319": 20.0
+      }
+    }
+  }
+]
