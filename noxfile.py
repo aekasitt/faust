@@ -60,10 +60,6 @@ def benchmark(session: nox.Session, pydantic: str):
         ["--defer-build"],
         ["--strict-models", "--defer-build"],
     )
-    if "pydantic-v1" in session.name:
-        # No defer_build in Pydantic v1
-        bench_arg_combos = bench_arg_combos[:2]
-
     for bench_args in bench_arg_combos:
         session.run("python", "bench/run.py", "--no-save")  # Warmup
         for _ in range(repeat):
