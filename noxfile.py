@@ -7,6 +7,8 @@ __DIR__ = Path(__file__).parent
 
 nox.options.sessions = ["test"]
 
+BENCHMARK_REPEAT = 20
+
 
 @nox.session(venv_backend="uv")
 @nox.parametrize("pydantic", ["1.10.18", "2.10.2"], ids=["pydantic-v1", "pydantic-v2"])
@@ -44,7 +46,7 @@ def benchmark(session: nox.Session, pydantic: str):
     )
     session.install(f"pydantic=={pydantic}")
 
-    repeat = 20
+    repeat = BENCHMARK_REPEAT
     for _ in range(repeat):
         session.run("python", "bench/run.py")
 
