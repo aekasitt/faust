@@ -81,6 +81,7 @@ lint.ignore = [
     "E731",
     "ERA001", # Commented out code - lots of false positives
     "TRY003", # Avoid specifying long messages outside exception class
+    "SIM108",
 ]
 # Extended set of fixable rulesextend-exclude = ["coverage*"]
 lint.extend-fixable = ["B"]
@@ -144,7 +145,7 @@ src = ["src/mymodels", "tests"]
     "PTH118",
     "PERF",
 ]
-"scripts/*.py" = ["INP001"]
+"bench/*.py" = ["INP001"]
 
 [tool.ruff.lint.isort]
 # Whitelist first party imports
@@ -195,4 +196,6 @@ dev = [
     "pytest>=8.3.3",
     "ruff>=0.8.1",
     "nox>=2024.10.9",
+    "py-spy>=0.4.0",
+    "polars>=1.16.0",
 ]

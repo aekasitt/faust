@@ -1315,6 +1315,9 @@ AnyClass122 = Annotated[
         Class71,
         Class72,
         Class73,
+        Class74,
+        Class75,
+        Class76,
     ],
     Field(discriminator="model_type"),
 ]
