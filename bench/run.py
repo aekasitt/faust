@@ -57,6 +57,7 @@ def load_results_dataframe(results_path: Path):
         "strict_models": pl.Boolean,
         "import_time_s": pl.Float32,
         "validate_time_s": pl.Float32,
+        "validate_again_time_s": pl.Float32,
     }
     if results_path.exists():
         # Load existing CSV into polars DataFrame
@@ -110,12 +111,23 @@ def import_models_and_validate_data(strict_models: bool = False):
             model_dicts = json.load(f)
         data.extend(model_dicts)
 
+    # Validate model data, first time will need to build parsing type
     t0 = time.time()
     validate_as(list[AnyClass122], data)
     t1 = time.time()
     validate_time_s = t1 - t0
 
-    return {"import_time_s": import_time_s, "validate_time_s": validate_time_s}
+    # Validate model data again, this time should be faster with parsing type cached
+    t0 = time.time()
+    validate_as(list[AnyClass122], data)
+    t1 = time.time()
+    validate_again_time_s = t1 - t0
+
+    return {
+        "import_time_s": import_time_s,
+        "validate_time_s": validate_time_s,
+        "validate_again_time_s": validate_again_time_s,
+    }
 
 
 if __name__ == "__main__":

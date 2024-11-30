@@ -19,19 +19,40 @@ def test(session: nox.Session, pydantic: str):
 
 
 @nox.session(venv_backend="uv")
-@nox.parametrize("pydantic", ["1.10.18", "2.10.2"], ids=["pydantic-v1", "pydantic-v2"])
+@nox.parametrize(
+    "pydantic",
+    [
+        "1.10.18",
+        # "2.6.3",
+        "2.7.2",
+        "2.8.2",
+        "2.9.2",
+        "2.10.2",
+    ],
+    ids=[
+        "pydantic-v1",
+        # "pydantic-v2.6",
+        "pydantic-v2.7",
+        "pydantic-v2.8",
+        "pydantic-v2.9",
+        "pydantic-v2.10",
+    ],
+)
 def benchmark(session: nox.Session, pydantic: str):
     session.run_install(
         "uv", "sync", "--frozen", env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location}
     )
     session.install(f"pydantic=={pydantic}")
 
-    repeat = 100
+    repeat = 20
     for _ in range(repeat):
         session.run("python", "bench/run.py")
 
     for _ in range(repeat):
         session.run("python", "bench/run.py", "--strict-models")
+
+    # Generate plot of results
+    session.run("python", "bench/plot.py")
 
 
 @nox.session(python=False)
