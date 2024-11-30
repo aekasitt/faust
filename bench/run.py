@@ -13,7 +13,7 @@ DATA_DIR = BENCH_DIR.parent / "tests" / "data"
 DEFAULT_BENCH_RESULTS_PATH = BENCH_DIR / "results.csv"
 
 
-def run_benchmark(results_file: Optional[str] = None, strict_models: bool = False):
+def run_benchmark(results_file: Optional[str] = None, strict_models: bool = False, save: bool = True):
     result = import_models_and_validate_data(strict_models=strict_models)
 
     machine_info = get_machine_info()
@@ -22,6 +22,10 @@ def run_benchmark(results_file: Optional[str] = None, strict_models: bool = Fals
     print("Machine Info:", machine_info)
     print("Context Info:", context_info)
     print("Benchmark Result:", result)
+
+    if not save:
+        print("Results not saved.")
+        return
 
     if results_file:
         results_path = Path(results_file)
@@ -94,12 +98,12 @@ def get_context_info(strict_models: bool):
 
 
 def import_models_and_validate_data(strict_models: bool = False):
-    t0 = time.time()
+    t0 = time.perf_counter()
     if strict_models:
-        from mymodels.strict.models import AnyClass122
+        from mymodels.strict.models import any_class_122_ta
     else:
-        from mymodels.models import AnyClass122
-    t1 = time.time()
+        from mymodels.models import any_class_122_ta
+    t1 = time.perf_counter()
     import_time_s = t1 - t0
 
     from mymodels.tools import validate_as
@@ -112,15 +116,15 @@ def import_models_and_validate_data(strict_models: bool = False):
         data.extend(model_dicts)
 
     # Validate model data, first time will need to build parsing type
-    t0 = time.time()
-    validate_as(list[AnyClass122], data)
-    t1 = time.time()
+    t0 = time.perf_counter()
+    validate_as(any_class_122_ta, data)
+    t1 = time.perf_counter()
     validate_time_s = t1 - t0
 
     # Validate model data again, this time should be faster with parsing type cached
-    t0 = time.time()
-    validate_as(list[AnyClass122], data)
-    t1 = time.time()
+    t0 = time.perf_counter()
+    validate_as(any_class_122_ta, data)
+    t1 = time.perf_counter()
     validate_again_time_s = t1 - t0
 
     return {
@@ -143,7 +147,13 @@ if __name__ == "__main__":
         default=None,
         help="Specify a custom path for the results CSV file.",
     )
+    parser.add_argument(
+        "--no-save",
+        action="store_false",
+        dest="save",
+        help="Do not save the benchmark results.",
+    )
 
     args = parser.parse_args()
 
-    run_benchmark(results_file=args.results_file, strict_models=args.strict_models)
+    run_benchmark(results_file=args.results_file, strict_models=args.strict_models, save=args.save)

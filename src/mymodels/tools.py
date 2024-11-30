@@ -70,25 +70,11 @@ if PYDANTIC_V2:
         wrapper over TypeAdapter creation to avoid unnecessarily re-creating
         TypeAdapters more than once.
         """
+        raise RuntimeError('broken')
         return TypeAdapter(type_)
 
-    def validate_as(type_: type[T], obj: Any) -> T:
-        """Validate and parse `obj` as `type_` type.
-
-        Example:
-            ```python
-            data = [{"key": "answer", "value": "42"}]
-            kvp_list = validate_as(List[KeyValuePair], data)
-            ```
-
-        Args:
-            type_ (type): The type to validate & parse `obj`.
-            obj (Any): An object parseable as `type_`.
-
-        Returns:
-            The validated & parsed object of type `type_`.
-        """
-        return _get_type_adapter(type_).validate_python(obj)
+    def validate_as(ta, obj: Any) -> Any:
+        return ta.validate_python(obj)
 
     def validate_json_as(type_: type[T], obj_json: str) -> T:
         """Validate and parse `obj_json` string as object of `type_` type.
@@ -163,13 +149,14 @@ else:
     from pydantic import (
         parse_file_as as validate_json_file_as,  # noqa: F401
     )
-    from pydantic import (
-        parse_obj_as as validate_as,  # noqa: F401
-    )
+    from pydantic import parse_obj_as
     from pydantic import (
         parse_raw_as as validate_json_as,
     )
     from pydantic.tools import _get_parsing_type
+
+    def validate_as(ta, obj: Any) -> Any:
+        return parse_obj_as(ta, obj)
 
     def model_validate(model_cls: type[Model_T], obj: Any) -> Model_T:
         """Validate and parse a Python dict to common model object.
