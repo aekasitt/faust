@@ -5,6 +5,10 @@ The `mymodels` package contains Pydantic models that are highly interrelated and
 performance concerns raised in the GitHub issue. The models and fields have been derived from a set of closed-source
 models, with classes and attributes renamed while the preserving structural integrity.
 
+**Noteable Improvements Since Repo Creation**
+- Removing excess `model_rebuild` calls (thanks to @samuelcolvin for identifying this)
+    - The v2 models previously had an unnecessary `model_rebuild` for each model, which was causing significant overhead at import time (for no benefit). After removing these, the import time is comparable to v1, potentially even faster depending on the machine.
+    - Takeaway: `model_rebuild` is not necessary in v2 in the same way that `update_forward_refs` are in v1. Pydantic will provide a descriptive error when `model_rebuild` turns out to be necessary, so may be preferable to start out without any `model_rebuild` when defining Pydantic models.
 
 ## Benchmark
 
@@ -13,9 +17,19 @@ The following results were produced with the following runtime context:
 * machine: arm64
 * architecture: 64bit
 * python_impl: CPython
-* python_version: 3.10.15
+* python_version: 3.12.3
 
-![Benchmark Results Plot](bench/results.png)
+#### `defer_build=True`
+
+The v2 models in the following cases had `ModelConfig` with `defer_build=True`.
+
+![Benchmark Results Plot, defer_build=true](bench/results-defer-build.png)
+
+#### `defer_build=False`
+
+The v2 models in the following cases had `ModelConfig` with `defer_build=False`.
+
+![Benchmark Results Plot, defer_build=false](bench/results-no-defer-build.png)
 
 ### Benckmark Details
 
@@ -30,8 +44,8 @@ For each benchmark run, the `bench/run.py` script is executed, which has 3 main 
     
 The script records the following times (appending to `bench/results.csv` file):
 * **Cold Import Time** - The amount of it takes to import the models (step 1)
-* **Cold Validation Time** - The amount of time it takes to validate the models before dynamic type validator has been cached
-* **Warm Validation Time** - The amount of time it takes to validate the models after dynamic type validator has been cached
+* **Cold Validation Time** - The amount of time it takes to validate the models before dynamic type validator has been cached (step 2)
+* **Warm Validation Time** - The amount of time it takes to validate the models after dynamic type validator has been cached (step 3)
 
 
 ### Run the Benchmark
