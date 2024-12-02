@@ -70,6 +70,7 @@ def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Option
 
     # Plot Import Time
     for strict_model in strict_model_values:
+        # TODO: defer_build hardcoded to "true" here currently...
         subset = avg_df.filter(
             pl.col("strict_models") == strict_model, pl.col("defer_build") == "true"
         )

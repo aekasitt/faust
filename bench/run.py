@@ -102,7 +102,7 @@ def get_context_info(strict_models: bool):
     from mymodels._compat import PYDANTIC_V2, PYDANTIC_VERSION
     from mymodels._pydantic_v2.settings import getenv_defer_build
 
-    defer_build = getenv_defer_build() if PYDANTIC_V2 else False
+    defer_build = getenv_defer_build()  # if PYDANTIC_V2 else False
     return {
         "pydantic_version": PYDANTIC_VERSION,
         "strict_models": strict_models,
