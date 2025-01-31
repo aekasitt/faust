@@ -32,6 +32,7 @@ def test(session: nox.Session, pydantic: str):
         "2.8.2",
         "2.9.2",
         "2.10.2",
+        "2.11.0a1",
     ],
     ids=[
         "pydantic-v1",
@@ -40,6 +41,7 @@ def test(session: nox.Session, pydantic: str):
         "pydantic-v2.8",
         "pydantic-v2.9",
         "pydantic-v2.10",
+        "pydantic-v2.11",
     ],
 )
 def benchmark(session: nox.Session, pydantic: str):

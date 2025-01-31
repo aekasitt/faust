@@ -44,7 +44,10 @@ def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Option
         [
             pl.col("version_split").struct.field("field_0").cast(pl.Int32).alias("pydantic_major"),
             pl.col("version_split").struct.field("field_1").cast(pl.Int32).alias("pydantic_minor"),
-            pl.col("version_split").struct.field("field_2").cast(pl.Int32).alias("pydantic_patch"),
+            pl.col("version_split")
+            .struct.field("field_2")
+            .cast(pl.String)
+            .alias("pydantic_patch"),
         ]
     )
 
