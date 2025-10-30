@@ -5,16 +5,16 @@ requires = [ 'hatchling' ]
 
 [dependency-groups]
 dev = [
-  'astor>=0.8.1',
+  'astor >=0.8.1',
   'faker',
-  'pytest-datadir>=1.5.0',
-  'pytest>=8.3.3',
-  'ruff>=0.8.1',
-  'nox>=2024.10.9',
-  'py-spy>=0.4.0',
-  'polars>=1.16.0',
-  'plotly[express]==6.0.0rc0',
-  'kaleido==0.2.1',
+  'pytest-datadir >=1.5.0',
+  'pytest >=8.3.3',
+  'ruff >=0.8.1',
+  'nox >=2024.10.9',
+  'py-spy >=0.4.0',
+  'polars >=1.16.0',
+  'plotly[express] ==6.0.0rc0',
+  'kaleido ==0.2.1',
 ]
 
 
@@ -26,12 +26,12 @@ authors = [
 classifiers = [
   'Private :: Do Not Upload',
 ]
-name = 'faust'
-version = '0.1.0'
+dependencies = []
 description = 'A set of pydantic models that elicit slow startup times in pydantic v2 (for now)'
+name = 'faust'
 requires-python = '>=3.13'
-dependencies = ['pydantic>=1.10.18']
 readme = 'README.md'
+version = '0.1.0'
 
 [project.scripts]
 faust = 'faust:main'
