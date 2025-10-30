@@ -8,19 +8,21 @@ __pycache__
 *.so
 
 
-# distribution
-dist
-
-
 # envvars
 .env
 .envrc
+
+
+# raws
+raws
+!raws/.gitkeep
 
 
 # tooling
 .mypy_cache
 .nox
 .ruff_cache
+
 
 # virtualenv
 .venv
