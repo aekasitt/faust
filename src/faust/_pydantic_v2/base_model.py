@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 # ruff: noqa
 
 from __future__ import annotations
@@ -11,7 +13,7 @@ from typing import Any, Literal
 from pydantic import AwareDatetime, BaseModel as PydanticBaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
 
-from mymodels._pydantic_v2.settings import getenv_defer_build
+from faust._pydantic_v2.settings import getenv_defer_build
 
 
 def encode_datetime_z(dt: datetime) -> str:

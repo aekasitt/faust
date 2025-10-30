@@ -1,16 +1,18 @@
-from __future__ import annotations
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
-# Standard Library Imports
+# Standard packages
 import contextlib
 from datetime import datetime
 from pprint import pformat
 from typing import Any
 
-# Third Party Imports
+# Third-party packages
 from pydantic import BaseConfig, validator
 from pydantic import BaseModel as PydanticBaseModel
 
-from mymodels._datetime import as_datetime_z
+# Local modules
+from faust._datetime import as_datetime_z
 
 
 def encode_datetime_z(dt: datetime) -> str:

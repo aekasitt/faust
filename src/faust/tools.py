@@ -1,10 +1,13 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import functools
 from pathlib import Path
 from typing import Any, TypeVar, Union
 
-import mymodels.models as mc
-from mymodels._compat import PYDANTIC_V2
-from mymodels._datetime import as_datetime_z, datetime_isoformat_z  # noqa: F401
+import faust.models as mc
+from faust._compat import PYDANTIC_V2
+from faust._datetime import as_datetime_z, datetime_isoformat_z  # noqa: F401
 
 StrBytesIntFloat = Union[str, bytes, int, float]
 StrPath = Union[str, Path]

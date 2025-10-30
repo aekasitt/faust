@@ -1,7 +1,10 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import datetime
 from typing import Union
 
-from mymodels._compat import PYDANTIC_V2
+from faust._compat import PYDANTIC_V2
 
 if PYDANTIC_V2:
   from pydantic.v1.datetime_parse import parse_datetime

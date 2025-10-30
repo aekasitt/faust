@@ -1,11 +1,12 @@
-from __future__ import annotations
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 
 from enum import Enum
 from typing import Annotated, Any, Literal, Optional, Union
 
 from pydantic import AwareDatetime, Field, RootModel, confloat, conint, constr
 
-from mymodels._pydantic_v2.base_model import BaseModel
+from faust._pydantic_v2.base_model import BaseModel
 
 
 class StrEnum(str, Enum):
