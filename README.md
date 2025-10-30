@@ -1,13 +1,14 @@
 # Faust
 
 [![Fork](https://img.shields.io/badge/fork-marcodlk/pydantic--v2--startup--perf--bench-beige?logo=github)](https://github.com/marcodlk/pydantic-v2-startup-perf-bench)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/aekasitt/faust/blob/master/LICENSE)
 [![Top](https://img.shields.io/github/languages/top/aekasitt/faust)](https://github.com/aekasitt/faust)
 [![Languages](https://img.shields.io/github/languages/count/aekasitt/faust)](https://github.com/aekasitt/faust)
 [![Size](https://img.shields.io/github/repo-size/aekasitt/faust)](https://github.com/aekasitt/faust)
 [![Last commit](https://img.shields.io/github/last-commit/aekasitt/faust/master)](https://github.com/aekasitt/faust)
 
 This repo aims to serve as a helpful benckmark for the [Pydantic v2 significantly slower than v1](https://github.com/pydantic/pydantic/discussions/6748) issue.
-The `mymodels` package contains Pydantic models that are highly interrelated and elicit some of the
+The `faust` package contains Pydantic models that are highly interrelated and elicit some of the
 performance concerns raised in the GitHub issue. The models and fields have been derived from a set of closed-source
 models, with classes and attributes renamed while the preserving structural integrity.
 
@@ -23,7 +24,7 @@ The following results were produced with the following runtime context:
 * machine: arm64
 * architecture: 64bit
 * python_impl: CPython
-* python_version: 3.12.3
+* python_version: 3.13.5
 
 #### `defer_build=True`
 
@@ -64,32 +65,32 @@ uv run nox -s benchmark
 
 ## Additional Details
 
-The `mymodels` package defines 4 variant sets of Pydantic models representing the same data model:
-1. `mymodels._pydantic_v1.models` - **Pydantic-v1**-compatible models with every field Optional (**Partial** model)
-2. `mymodels._pydantic_v1.strict.models` - **Pydantic-v1**-compatible models enforcing required fields (**Strict** model)
-1. `mymodels._pydantic_v2.models` - **Pydantic-v2**-compatible models with every field Optional (**Partial** model)
-2. `mymodels._pydantic_v2.strict.models` - **Pydantic-v2**-compatible models enforcing required fields (**Strict** model)
+The `faust` package defines 4 variant sets of Pydantic models representing the same data model:
+1. `faust._pydantic_v1.models` - **Pydantic-v1**-compatible models with every field Optional (**Partial** model)
+2. `faust._pydantic_v1.strict.models` - **Pydantic-v1**-compatible models enforcing required fields (**Strict** model)
+1. `faust._pydantic_v2.models` - **Pydantic-v2**-compatible models with every field Optional (**Partial** model)
+2. `faust._pydantic_v2.strict.models` - **Pydantic-v2**-compatible models enforcing required fields (**Strict** model)
 
 For convenience, the package is setup to support pydantic-version-agnotic top-level imports where the appropriate models are
 imported transparently based on the installed Pydantic version:
 
 ```python
-import mymodels.models
-import mymodels.strict.models
+import faust.models
+import faust.strict.models
 ```
 
 If `pydantic<2.0` is installed, the above would translate to:
 
 ```python
-import mymodels._pydantic_v1.models
-import mymodels._pydantic_v1.strict.models
+import faust._pydantic_v1.models
+import faust._pydantic_v1.strict.models
 ```
 
 If `pydantic>=2.0` is installed, the above would translate to:
 
 ```python
-import mymodels._pydantic_v2.models
-import mymodels._pydantic_v2.strict.models
+import faust._pydantic_v2.models
+import faust._pydantic_v2.strict.models
 ```
 
 ## Run Tests
@@ -101,3 +102,6 @@ uv run nox -s test
 ```
 
 
+## License
+
+This project is licensed under the terms of the MIT license.
