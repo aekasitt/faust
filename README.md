@@ -1,4 +1,10 @@
-# Pydantic v2 Slower Than v1 on Startup? A Benchmark
+# Faust
+
+[![Fork](https://img.shields.io/badge/fork-marcodlk/pydantic--v2--startup--perf--bench-beige?logo=github)](https://github.com/marcodlk/pydantic-v2-startup-perf-bench)
+[![Top](https://img.shields.io/github/languages/top/aekasitt/faust)](https://github.com/aekasitt/faust)
+[![Languages](https://img.shields.io/github/languages/count/aekasitt/faust)](https://github.com/aekasitt/faust)
+[![Size](https://img.shields.io/github/repo-size/aekasitt/faust)](https://github.com/aekasitt/faust)
+[![Last commit](https://img.shields.io/github/last-commit/aekasitt/faust/master)](https://github.com/aekasitt/faust)
 
 This repo aims to serve as a helpful benckmark for the [Pydantic v2 significantly slower than v1](https://github.com/pydantic/pydantic/discussions/6748) issue.
 The `mymodels` package contains Pydantic models that are highly interrelated and elicit some of the
