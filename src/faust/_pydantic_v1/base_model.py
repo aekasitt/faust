@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Standard packages
+from __future__ import annotations
 import contextlib
 from datetime import datetime
 from pprint import pformat

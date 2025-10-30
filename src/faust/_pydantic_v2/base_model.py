@@ -2,9 +2,8 @@
 # -*- coding: utf-8 -*-
 # ruff: noqa
 
-from __future__ import annotations
-
 # Standard Library Imports
+from __future__ import annotations
 from datetime import datetime
 from pprint import pformat
 from typing import Any, Literal
