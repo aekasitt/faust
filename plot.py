@@ -9,16 +9,15 @@ import plotly.graph_objects as go
 import polars as pl
 from plotly.subplots import make_subplots
 
-BENCH_DIR = Path(__file__).parent
-
-DEFAULT_BENCH_RESULTS_PATH = BENCH_DIR / "results.csv"
+RAWS_DIR = Path(__file__).parent / "raws"
+RESULTS_PATH: Path = RAWS_DIR / "results.csv"
 
 
 def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Optional[str] = None):
   if results_file:
     results_path = Path(results_file)
   else:
-    results_path = DEFAULT_BENCH_RESULTS_PATH
+    results_path = RESULTS_PATH
 
   if save_plot:
     save_plot_path = Path(save_plot)

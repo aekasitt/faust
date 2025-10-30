@@ -1,16 +1,16 @@
 [
-    {
-        "modelType": "Class74",
-        "field259": true,
-        "field260": 9000.0
-    },
-    {
-        "modelType": "Class75",
-        "field235": "80d2bff7-a93f-4200-821c-4ab86d08c59e"
-    },
-    {
-        "modelType": "Class76",
-        "field261": 42.0,
-        "field262": 42.0
-    }
+  {
+    "modelType": "Class74",
+    "field259": true,
+    "field260": 9000.0
+  },
+  {
+    "modelType": "Class75",
+    "field235": "80d2bff7-a93f-4200-821c-4ab86d08c59e"
+  },
+  {
+    "modelType": "Class76",
+    "field261": 42.0,
+    "field262": 42.0
+  }
 ]

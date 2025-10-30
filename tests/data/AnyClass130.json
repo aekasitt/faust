@@ -1,28 +1,28 @@
 [
-    {
-        "modelType": "Class111",
-        "field317": 3.2,
-        "field318": 30.0,
-        "field112": "field7",
-        "field114": 0,
-        "field107": "XXX",
-        "field181": "field86",
-        "field118": "XXX111",
+  {
+    "modelType": "Class111",
+    "field317": 3.2,
+    "field318": 30.0,
+    "field112": "field7",
+    "field114": 0,
+    "field107": "XXX",
+    "field181": "field86",
+    "field118": "XXX111",
+    "field101": "0.50.1",
+    "field149": "field21",
+    "field320": -30.470384,
+    "field321": -70.76495,
+    "field322": 1574.0,
+    "field319": 20.0,
+    "field182": [],
+    "field183": [
+      {
+        "modelType": "Class90",
         "field101": "0.50.1",
         "field149": "field21",
-        "field320": -30.470384,
-        "field321": -70.76495,
-        "field322": 1574.0,
-        "field319": 20.0,
-        "field182": [],
-        "field183": [
-            {
-                "modelType": "Class90",
-                "field101": "0.50.1",
-                "field149": "field21",
-                "field265": 10.0
-            }
-        ],
-        "field185": []
-    }
+        "field265": 10.0
+      }
+    ],
+    "field185": []
+  }
 ]

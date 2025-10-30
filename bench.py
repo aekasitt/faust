@@ -11,10 +11,8 @@ from typing import Optional
 
 import polars as pl
 
-BENCH_DIR = Path(__file__).parent
-DATA_DIR = BENCH_DIR.parent / "tests" / "data"
-
-DEFAULT_BENCH_RESULTS_PATH = BENCH_DIR / "results.csv"
+RAWS_DIR = Path(__file__).parent / "raws"
+RESULTS_PATH = RAWS_DIR / "results.csv"
 
 
 def run_benchmark(
@@ -39,7 +37,7 @@ def run_benchmark(
   if results_file:
     results_path = Path(results_file)
   else:
-    results_path = DEFAULT_BENCH_RESULTS_PATH
+    results_path = RESULTS_PATH
 
   # Run info combines machine, context, and benchmark times info
   run_info = {**machine_info, **context_info, **result}
@@ -127,7 +125,7 @@ def import_models_and_validate_data(strict_models: bool = False, defer_build: bo
   from faust.tools import validate_as
 
   data: list[dict] = []
-  json_paths = DATA_DIR.glob("*.json")
+  json_paths = RAWS_DIR.glob("*.json")
   for json_path in json_paths:
     with open(json_path) as f:
       model_dicts = json.load(f)

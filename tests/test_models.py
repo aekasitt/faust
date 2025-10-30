@@ -1,11 +1,14 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
 import datetime
 import json
 from pathlib import Path
 
 import pytest
 
-import mymodels.models as mc
-from mymodels.tools import (
+import faust.models as models
+from faust.tools import (
     dump_json_as,
     dump_json_file_as,
     model_dump,
@@ -17,7 +20,7 @@ from mymodels.tools import (
 )
 
 
-class DateTimeModel(mc.BaseModel):
+class DateTimeModel(faust.BaseModel):
     dt: datetime.datetime
 
 
@@ -32,7 +35,7 @@ ANYMODEL_NAMES = [
 
 @pytest.mark.parametrize("anymodel_name", ANYMODEL_NAMES)
 def test_validate_dump(anymodel_name: str, shared_datadir: Path):
-    anymodel = getattr(mc, anymodel_name)
+    anymodel = getattr(models, anymodel_name)
     objs_path = shared_datadir / f"{anymodel_name}.json"
 
     with open(objs_path) as f:
@@ -43,7 +46,7 @@ def test_validate_dump(anymodel_name: str, shared_datadir: Path):
         model_type = obj_dict["modelType"]
         model_validate(getattr(mc, model_type), obj_dict)
 
-    objs: list[mc.Class35] = validate_as(list[anymodel], objs_data)
+    objs: list[models.Class35] = validate_as(list[anymodel], objs_data)
 
     for obj_data, obj in zip(objs_data, objs):
         assert obj.model_type == obj.__class__.__name__
@@ -53,7 +56,7 @@ def test_validate_dump(anymodel_name: str, shared_datadir: Path):
 
 @pytest.mark.parametrize("anymodel_name", ANYMODEL_NAMES)
 def test_validate_dump_json(anymodel_name: str, shared_datadir: Path):
-    anymodel = getattr(mc, anymodel_name)
+    anymodel = getattr(models, anymodel_name)
     objs_path = shared_datadir / f"{anymodel_name}.json"
 
     with open(objs_path) as f:
@@ -71,7 +74,7 @@ def test_validate_dump_json(anymodel_name: str, shared_datadir: Path):
 
 @pytest.mark.parametrize("anymodel_name", ANYMODEL_NAMES)
 def test_validate_dump_json_file(anymodel_name: str, shared_datadir: Path):
-    anymodel = getattr(mc, anymodel_name)
+    anymodel = getattr(models, anymodel_name)
     objs_path = shared_datadir / f"{anymodel_name}.json"
 
     objs = validate_json_file_as(list[anymodel], objs_path)
