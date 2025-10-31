@@ -83,13 +83,13 @@ The following results were produced with the following runtime context:
 
 The v2 models in the following cases had `ModelConfig` with `defer_build=True`.
 
-![Benchmark Results Plot, defer_build=true](bench/results-defer-build.png)
+![Benchmark Results Plot, defer_build=true](raws/results.png)
 
 #### `defer_build=False`
 
 The v2 models in the following cases had `ModelConfig` with `defer_build=False`.
 
-![Benchmark Results Plot, defer_build=false](bench/results-no-defer-build.png)
+![Benchmark Results Plot, defer_build=false](raws/results.png)
 
 ### Benckmark Details
 
