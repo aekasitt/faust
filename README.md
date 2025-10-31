@@ -17,6 +17,59 @@ models, with classes and attributes renamed while the preserving structural inte
     - The v2 models previously had an unnecessary `model_rebuild` for each model, which was causing significant overhead at import time (for no benefit). After removing these, the import time is comparable to v1, potentially even faster depending on the machine.
     - Takeaway: `model_rebuild` is not necessary in v2 in the same way that `update_forward_refs` are in v1. Pydantic will provide a descriptive error when `model_rebuild` turns out to be necessary, so may be preferable to start out without any `model_rebuild` when defining Pydantic models.
 
+## Project structure
+
+<details>
+  <summary> Tree structure </summary>
+
+  ```
+  faust
+  ├── src/faust
+  │   ├── __init__.py
+  │   ├── _compat.py
+  │   ├── _datetime.py
+  │   ├── _pydantic_v1
+  │   │   ├── __init__.py
+  │   │   ├── base_model.py
+  │   │   ├── models.py
+  │   │   └── strict
+  │   │       ├── __init__.py
+  │   │       └── models.py
+  │   │
+  │   ├── _pydantic_v2
+  │   │   ├── __init__.py
+  │   │   ├── base_model.py
+  │   │   ├── models.py
+  │   │   ├── settings.py
+  │   │   └── strict
+  │   │       ├── __init__.py
+  │   │       └── models.py
+  │   │
+  │   ├── models.py
+  │   ├── strict
+  │   │   ├── __init__.py
+  │   │   └── models.py
+  │   │
+  │   └── tools.py
+  │
+  └── tests
+      ├── __init__.py
+      ├── data
+      │   ├── AnyClass124.json
+      │   ├── AnyClass128.json
+      │   ├── AnyClass129.json
+      │   ├── AnyClass130.json
+      │   └── AnyClass132.json
+      │
+      ├── test_models.py
+      └── test_strict_models.py
+  ```
+</details>
+
+The codebase is broken down into separate branches meant for `nox` runner to locate
+and run different syntaxes for Pydantic versions as well as Msgspec that does similar
+model validation and can be used with slight changes.
+
 ## Benchmark
 
 The following results were produced with the following runtime context:
