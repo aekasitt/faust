@@ -9,7 +9,7 @@ import plotly.graph_objects as go
 import polars as pl
 from plotly.subplots import make_subplots
 
-RAWS_DIR = Path(__file__).parent / "raws"
+RAWS_DIR = Path(__file__).parent / "../../raws"
 RESULTS_PATH: Path = RAWS_DIR / "results.csv"
 
 

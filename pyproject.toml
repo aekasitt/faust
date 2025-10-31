@@ -33,9 +33,6 @@ requires-python = '>=3.13'
 readme = 'README.md'
 version = '0.1.0'
 
-[project.scripts]
-faust = 'faust:main'
-
 
 [tool.ruff]
 indent-width = 2

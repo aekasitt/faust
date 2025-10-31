@@ -11,7 +11,7 @@ from typing import Optional
 
 import polars as pl
 
-RAWS_DIR = Path(__file__).parent / "raws"
+RAWS_DIR = Path(__file__).parent / "../../raws"
 RESULTS_PATH = RAWS_DIR / "results.csv"
 
 

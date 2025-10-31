@@ -56,12 +56,12 @@ def benchmark(session: nox.Session, pydantic: str):
     ["--strict-models", "--defer-build"],
   )
   for bench_args in bench_arg_combos:
-    session.run("python", "bench.py", "--no-save")  # Warmup
+    session.run("python", "src/faust/bench.py", "--no-save")  # Warmup
     for _ in range(repeat):
-      session.run("python", "bench.py", *bench_args, *extra_args)
+      session.run("python", "src/faust/bench.py", *bench_args, *extra_args)
 
   # Generate plot of results
-  session.run("python", "plot.py", *extra_args)
+  session.run("python", "src/faust/plot.py", *extra_args)
 
 
 def _parse_benchmark_args(args: Sequence[str]):
