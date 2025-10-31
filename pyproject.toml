@@ -23,10 +23,7 @@ authors = [
   { name = 'Marco de Lannoy Kobayashi', email = 'mdlkdev@gmail.com' },
   { name = 'Sitt Guruvanich', email = 'aekazitt+github@gmail.com' },
 ]
-classifiers = [
-  'Private :: Do Not Upload',
-]
-dependencies = []
+classifiers = [ 'Private :: Do Not Upload' ]
 description = 'A set of pydantic models that elicit slow startup times in pydantic v2 (for now)'
 name = 'faust'
 requires-python = '>=3.13'
@@ -38,3 +35,16 @@ version = '0.1.0'
 indent-width = 2
 line-length = 100
 target-version = 'py313'
+
+
+[tool.ruff.lint.per-file-ignores]
+'__init__.py' = [
+  'F401',  # Ignore unused imports
+  'F403',  # Ignore unable to detect undefined names when using '*'
+]
+'src/faust/bench.py' = [
+  'F401',  # Ignore unused imports
+]
+'src/faust/_pydantic_v2/strict/models.py' = [
+  'F401',  # Ignore unused imports
+]
