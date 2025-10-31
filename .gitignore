@@ -16,6 +16,8 @@ __pycache__
 # raws
 raws
 !raws/.gitkeep
+!raws/results.png
+!raws/results.svg
 
 
 # tooling
