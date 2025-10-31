@@ -6,9 +6,9 @@ import os
 
 def getenv_defer_build() -> bool:
   # Support "0", "1", "false", "true", etc
-  defer_build = os.getenv("MYMODELS_DEFER_BUILD")
+  defer_build = os.getenv("FAUST_DEFER_BUILD")
   if defer_build is None:
-    return None
+    return False
 
   try:
     defer_build = int(defer_build)
