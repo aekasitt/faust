@@ -20,7 +20,7 @@ from faust.tools import (
 )
 
 
-class DateTimeModel(faust.BaseModel):
+class DateTimeModel(models.BaseModel):
     dt: datetime.datetime
 
 
@@ -44,7 +44,7 @@ def test_validate_dump(anymodel_name: str, shared_datadir: Path):
     # Verify can validate one model at a time
     for obj_dict in objs_data:
         model_type = obj_dict["modelType"]
-        model_validate(getattr(mc, model_type), obj_dict)
+        model_validate(getattr(models, model_type), obj_dict)
 
     objs: list[models.Class35] = validate_as(list[anymodel], objs_data)
 
