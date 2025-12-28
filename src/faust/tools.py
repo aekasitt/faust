@@ -5,16 +5,108 @@ import functools
 from pathlib import Path
 from typing import Any, TypeVar, Union
 
-import faust.models as mc
-from faust._compat import PYDANTIC_V2
+import faust.models as models
+from faust._compat import VALIDATOR
 from faust._datetime import as_datetime_z, datetime_isoformat_z  # noqa: F401
 
 StrBytesIntFloat = Union[str, bytes, int, float]
 StrPath = Union[str, Path]
 T = TypeVar("T")
-Model_T = TypeVar("Model_T", bound=mc.BaseModel)
+Model_T = TypeVar("Model_T", bound=models.BaseModel)
 
-if PYDANTIC_V2:
+if VALIDATOR == "pydantic-v1":
+  from pydantic import (
+    parse_file_as as validate_json_file_as,  # noqa: F401
+  )
+  from pydantic import parse_obj_as
+  from pydantic import (
+    parse_raw_as as validate_json_as,
+  )
+  from pydantic.tools import _get_parsing_type
+
+  def validate_as(ta, obj: Any) -> Any:
+    return parse_obj_as(ta, obj)
+
+  def model_validate(model_cls: type[Model_T], obj: Any) -> Model_T:
+    """Validate and parse a Python dict to common model object.
+
+    Args:
+        model_cls (Type[Model_T]): The pydantic model class.
+        obj (Any): An object (usually dict) representing the model object.
+
+    Returns:
+        Model_T: The parsed common model object
+    """
+    return model_cls.parse_obj(obj)
+
+  def model_validate_json(model_cls: type[Model_T], obj_json: str) -> Model_T:
+    """Validate and parse a Python dict to common model object.
+
+    Args:
+        model_cls (Type[Model_T]): The pydantic model class.
+        obj_json (str): A JSON string representing the model object.
+
+    Returns:
+        Model_T: The parsed common model object
+    """
+    return model_cls.parse_raw(obj_json)
+
+  def model_dump(instance: models.BaseModel) -> dict:
+    """Converts a common model object to corresponding Python dict.
+
+    Args:
+        instance (BaseModel): The common model object
+
+    Returns:
+        dict: The corresponding Python dict
+    """
+    return instance.to_dict()
+
+  def model_dump_json(instance: models.BaseModel) -> str:
+    """Converts a common model object to corresponding JSON string.
+
+    Args:
+        instance (BaseModel): The common model object
+
+    Returns:
+        str: The corresponding JSON string
+    """
+    return instance.json(by_alias=True, exclude_unset=True, exclude_none=True)
+
+  def dump_json_as(
+    type_: type,
+    obj: Any,
+    by_alias: bool = True,
+    exclude_unset: bool = True,
+    exclude_none: bool = True,
+    **json_dump_kwargs,
+  ) -> str:
+    """Convert `obj` to JSON string using `type_` as the validation & parsing schema.
+
+    This function serves as a shortcut for the following code:
+
+    ```python
+    class TypeModel(BaseModel):
+        __root__: type_
+
+    model_validate(TypeModel, obj).json(**json_dump_kwargs)
+    ```
+
+    Args:
+        type_: The type to validate & parse `obj`.
+        obj: An object parseable as `type_`.
+
+    Returns:
+        The JSON string representing `obj`.
+    """
+    with models.BaseModel.jsonable_iter_patch():
+      return _get_parsing_type(type_)(__root__=obj).json(
+        by_alias=by_alias,
+        exclude_unset=exclude_unset,
+        exclude_none=exclude_none,
+        **json_dump_kwargs,
+      )
+elif VALIDATOR == "pydantic-v2":
   from pydantic import TypeAdapter
 
   def model_validate(model_cls: type[Model_T], obj: Any) -> Model_T:
@@ -41,7 +133,7 @@ if PYDANTIC_V2:
     """
     return model_cls.model_validate_json(obj_json)
 
-  def model_dump(instance: mc.BaseModel) -> dict:
+  def model_dump(instance: models.BaseModel) -> dict:
     """Converts a common model object to corresponding Python dict.
 
     Args:
@@ -52,7 +144,7 @@ if PYDANTIC_V2:
     """
     return instance.model_dump(mode="json", by_alias=True, exclude_unset=True, exclude_none=True)
 
-  def model_dump_json(instance: mc.BaseModel) -> str:
+  def model_dump_json(instance: models.BaseModel) -> str:
     """Converts a common model object to corresponding Python dict.
 
     Args:
@@ -144,99 +236,6 @@ if PYDANTIC_V2:
       )
       .decode()
     )
-
-else:
-  from pydantic import (
-    parse_file_as as validate_json_file_as,  # noqa: F401
-  )
-  from pydantic import parse_obj_as
-  from pydantic import (
-    parse_raw_as as validate_json_as,
-  )
-  from pydantic.tools import _get_parsing_type
-
-  def validate_as(ta, obj: Any) -> Any:
-    return parse_obj_as(ta, obj)
-
-  def model_validate(model_cls: type[Model_T], obj: Any) -> Model_T:
-    """Validate and parse a Python dict to common model object.
-
-    Args:
-        model_cls (Type[Model_T]): The pydantic model class.
-        obj (Any): An object (usually dict) representing the model object.
-
-    Returns:
-        Model_T: The parsed common model object
-    """
-    return model_cls.parse_obj(obj)
-
-  def model_validate_json(model_cls: type[Model_T], obj_json: str) -> Model_T:
-    """Validate and parse a Python dict to common model object.
-
-    Args:
-        model_cls (Type[Model_T]): The pydantic model class.
-        obj_json (str): A JSON string representing the model object.
-
-    Returns:
-        Model_T: The parsed common model object
-    """
-    return model_cls.parse_raw(obj_json)
-
-  def model_dump(instance: mc.BaseModel) -> dict:
-    """Converts a common model object to corresponding Python dict.
-
-    Args:
-        instance (BaseModel): The common model object
-
-    Returns:
-        dict: The corresponding Python dict
-    """
-    return instance.to_dict()
-
-  def model_dump_json(instance: mc.BaseModel) -> str:
-    """Converts a common model object to corresponding JSON string.
-
-    Args:
-        instance (BaseModel): The common model object
-
-    Returns:
-        str: The corresponding JSON string
-    """
-    return instance.json(by_alias=True, exclude_unset=True, exclude_none=True)
-
-  def dump_json_as(
-    type_: type,
-    obj: Any,
-    by_alias: bool = True,
-    exclude_unset: bool = True,
-    exclude_none: bool = True,
-    **json_dump_kwargs,
-  ) -> str:
-    """Convert `obj` to JSON string using `type_` as the validation & parsing schema.
-
-    This function serves as a shortcut for the following code:
-
-    ```python
-    class TypeModel(BaseModel):
-        __root__: type_
-
-    model_validate(TypeModel, obj).json(**json_dump_kwargs)
-    ```
-
-    Args:
-        type_: The type to validate & parse `obj`.
-        obj: An object parseable as `type_`.
-
-    Returns:
-        The JSON string representing `obj`.
-    """
-    with mc.BaseModel.jsonable_iter_patch():
-      return _get_parsing_type(type_)(__root__=obj).json(
-        by_alias=by_alias,
-        exclude_unset=exclude_unset,
-        exclude_none=exclude_none,
-        **json_dump_kwargs,
-      )
 
 
 def dump_json_file_as(type_: type, obj: Any, filepath: StrPath, **json_dump_kwargs):

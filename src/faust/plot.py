@@ -33,24 +33,10 @@ def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Option
     pl.col("defer_build").cast(pl.Utf8),
   )
 
-  # Group by 'pydantic_version' and 'strict_models', compute the mean of 'import_time_s' and 'validate_time_s'
-  avg_df = results_df.group_by(["pydantic_version", "strict_models", "defer_build"]).mean()
+  # Group by 'validator' and 'strict_models', compute the mean of 'import_time_s' and 'validate_time_s'
+  avg_df = results_df.group_by(["validator", "strict_models", "defer_build"]).mean()
 
-  # Split 'pydantic_version' into 'major', 'minor', and 'patch' components
-  avg_df = avg_df.with_columns(
-    [
-      pl.col("pydantic_version").str.split_exact(".", 2).alias("version_split"),
-    ]
-  )
-  avg_df = avg_df.with_columns(
-    [
-      pl.col("version_split").struct.field("field_0").cast(pl.Int32).alias("pydantic_major"),
-      pl.col("version_split").struct.field("field_1").cast(pl.Int32).alias("pydantic_minor"),
-      pl.col("version_split").struct.field("field_2").cast(pl.String).alias("pydantic_patch"),
-    ]
-  )
-
-  # pydantic_versions = sorted(avg_df["pydantic_version"].unique())
+  # validators = sorted(avg_df["validator"].unique())
   strict_model_values = ["false", "true"]
 
   # Create subplots with shared x-axis
@@ -75,13 +61,13 @@ def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Option
     # TODO: defer_build hardcoded to "true" here currently...
     subset = avg_df.filter(pl.col("strict_models") == strict_model, pl.col("defer_build") == "true")
     # Sort by semantic version
-    subset = subset.sort(by=["pydantic_major", "pydantic_minor", "pydantic_patch"])
+    subset = subset.sort(by=["validator"])
     name = (
       "Strict (mymodels.strict.models)" if strict_model == "true" else "Partial (mymodels.models)"
     )
     fig.add_trace(
       go.Bar(
-        x=subset["pydantic_version"],
+        x=subset["validator"],
         y=subset["import_time_s"],
         name=name,
         marker_color=colors[strict_model],
@@ -93,7 +79,7 @@ def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Option
     )
     fig.add_trace(
       go.Bar(
-        x=subset["pydantic_version"],
+        x=subset["validator"],
         y=subset["validate_time_s"],
         name=name,
         marker_color=colors[strict_model],
@@ -106,7 +92,7 @@ def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Option
     )
     fig.add_trace(
       go.Bar(
-        x=subset["pydantic_version"],
+        x=subset["validator"],
         y=subset["validate_again_time_s"],
         name=name,
         marker_color=colors[strict_model],
@@ -120,12 +106,12 @@ def plot_benchmark_results(results_file: Optional[str] = None, save_plot: Option
 
   # Update axes titles
   for irow in range(1, n_rows + 1):
-    fig.update_xaxes(title_text="Pydantic Version", row=irow, col=1)
+    fig.update_xaxes(title_text="Validator", row=irow, col=1)
     fig.update_yaxes(title_text="Time (seconds)", row=irow, col=1)
 
   # Update layout
   fig.update_layout(
-    title_text="Import and Validation Performance, by Pydantic Version and Models Variant",
+    title_text="Import and Validation Performance, by Validator and Models Variant",
     height=1400,
     legend_title="Models Variant",
   )

@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import argparse
+from argparse import ArgumentParser, Namespace
 from collections.abc import Sequence
-from pathlib import Path
 
 import nox
-import nox.command
-
-__DIR__ = Path(__file__).parent
 
 nox.options.sessions = ["test"]
 
@@ -16,28 +12,40 @@ BENCHMARK_REPEAT = 20
 
 
 @nox.session(venv_backend="uv")
-@nox.parametrize("pydantic", ["1.10.18", "2.12.3"], ids=["pydantic-v1", "pydantic-v2"])
-def test(session: nox.Session, pydantic: str):
+@nox.parametrize(
+  "model_validator",
+  [
+    ("msgspec", "0.19.0"),
+    ("pydantic", "1.10.18"),
+    ("pydantic", "2.12.3"),
+  ],
+  ids=["msgspec", "pydantic-v1", "pydantic-v2"],
+)
+def test(session: nox.Session, model_validator: tuple[str, str]):
+  libname, version = model_validator
   session.run_install(
     "uv", "sync", "--frozen", env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location}
   )
-  session.install(f"pydantic=={pydantic}")
+  session.install(f"{libname}=={version}")
   session.run("pytest", "-svv")
 
 
 @nox.session(venv_backend="uv")
 @nox.parametrize(
-  "pydantic",
+  "model_validator",
   [
-    "1.10.18",
-    "2.12.3",
+    ("msgspec", "0.19.0"),
+    ("pydantic", "1.10.18"),
+    ("pydantic", "2.12.3"),
   ],
   ids=[
+    "msgspec",
     "pydantic-v1",
     "pydantic-v2",
   ],
 )
-def benchmark(session: nox.Session, pydantic: str):
+def benchmark(session: nox.Session, model_validator: tuple[str, str]):
+  libname, version = model_validator
   args = _parse_benchmark_args(session.posargs)
   repeat: int = args.repeat
   results_file = args.results_file
@@ -47,7 +55,7 @@ def benchmark(session: nox.Session, pydantic: str):
   session.run_install(
     "uv", "sync", "--frozen", env={"UV_PROJECT_ENVIRONMENT": session.virtualenv.location}
   )
-  session.install(f"pydantic=={pydantic}")
+  session.install(f"{libname}=={version}")
 
   bench_arg_combos = (
     [],
@@ -64,8 +72,8 @@ def benchmark(session: nox.Session, pydantic: str):
   session.run("python", "src/faust/plot.py", *extra_args)
 
 
-def _parse_benchmark_args(args: Sequence[str]):
-  parser = argparse.ArgumentParser(prog="nox -s benchmark")
+def _parse_benchmark_args(args: Sequence[str]) -> Namespace:
+  parser: ArgumentParser = ArgumentParser(prog="nox -s benchmark")
   parser.add_argument("--repeat", type=int, default=BENCHMARK_REPEAT, help="Number of repetitions")
   parser.add_argument("--results-file", type=str, default=None, help="Results file path")
   return parser.parse_args(args)

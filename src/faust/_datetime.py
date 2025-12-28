@@ -4,12 +4,12 @@
 import datetime
 from typing import Union
 
-from faust._compat import PYDANTIC_V2
+from faust._compat import VALIDATOR
 
-if PYDANTIC_V2:
-  from pydantic.v1.datetime_parse import parse_datetime
-else:
+if VALIDATOR == "pydantic-v1":
   from pydantic.datetime_parse import parse_datetime
+elif VALIDATOR == "pydantic-v2":
+  from pydantic.v1.datetime_parse import parse_datetime
 
 StrBytesIntFloat = Union[str, bytes, int, float]
 

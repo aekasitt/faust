@@ -64,7 +64,7 @@ def load_results_dataframe(results_path: Path):
     "arch": pl.String,
     "python_impl": pl.String,
     "python_version": pl.String,
-    "pydantic_version": pl.String,
+    "validator": pl.String,
     "strict_models": pl.Boolean,
     "defer_build": pl.Boolean,
     "import_time_s": pl.Float32,
@@ -100,14 +100,14 @@ def format_machine_id(machine_info: dict[str, str]) -> str:
 
 
 def get_context_info(strict_models: bool):
-  from faust._compat import PYDANTIC_V2, PYDANTIC_VERSION
+  from faust._compat import VALIDATOR
   from faust._pydantic_v2.settings import getenv_defer_build
 
   defer_build = getenv_defer_build()  # if PYDANTIC_V2 else False
   return {
-    "pydantic_version": PYDANTIC_VERSION,
-    "strict_models": strict_models,
     "defer_build": defer_build,
+    "strict_models": strict_models,
+    "validator": VALIDATOR,
   }
 
 

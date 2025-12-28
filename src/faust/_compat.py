@@ -1,6 +1,19 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from pydantic.version import VERSION as PYDANTIC_VERSION
+### Standard packages ###
+from typing import Literal
 
-PYDANTIC_V2 = PYDANTIC_VERSION.startswith("2.")
+VALIDATOR: Literal["msgspec", "pydantic-v1", "pydantic-v2"] | None = None
+try:
+  from pydantic.version import VERSION
+
+  if VERSION.startswith("2."):
+    VALIDATOR = "pydantic-v2"
+  else:
+    VALIDATOR = "pydantic-v1"
+except ImportError:
+  VALIDATOR = "msgspec"
+
+
+__all__: tuple[str, ...] = ("VALIDATOR",)
